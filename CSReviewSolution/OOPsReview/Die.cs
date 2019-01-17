@@ -13,6 +13,10 @@ namespace OOPsReview
         //If we didn't have the using System.Collections.Generic, we'd have to put them before the command over and over again. It's a fully qualified name/datatype.
         //Anytime we have to include the namespace, that's what we call it.
 
+        //Use the System.Random class for the RNG calc! Make sure the instance is static so all instances of Die will use the same generator.
+        //The instance of Random will be created when the first instance of Die is created and be destroyed when the last instance of Die is.
+        public static Random _rnd = new Random(); //New causes a class instance to be created.
+
         /*Data members:
          * It's the physical storage area for data values. These are usually private. 
          */
@@ -35,7 +39,7 @@ namespace OOPsReview
          * 2 types:*/
 
          //Fully implemented property
-         public int Side
+         public int Sides
         {//If you put a ? after the data type, it becomes nullable or nothing. So int? is valid!
             //This means Sides = ""; is not the same as null (tho it is nothing), so in the ? case, Sides = null;
             get
@@ -52,6 +56,7 @@ namespace OOPsReview
                 if (value >= 6 && value <= 20)
                 {
                     _Sides = value;
+                    Roll(); //Gives us a valid face value for whatever number of sides we assign to the dice.
                 }
                 else
                 {
@@ -61,9 +66,84 @@ namespace OOPsReview
         }
 
          //Auto implemented property
+         /*There is no defined data member for this type of property! Instead, the system creates an internal storage area of the property data type and manages the area for your code.
+         Typically, this type of property is commonly used when no validation is required for the data.*/
 
+        public int FaceValue { get; private set; }
+        //It's a fast way of coding a property. It just hangs onto the data. Just use this when you don't need validation.
+        //Private set means the computer determines it from inside the class, not the user. 
 
+        public string Colour
+        {
+            get
+            {
+                return _Colour;
+            }
+            set
+            {
+                //value == "" would test an empty string.
+                //value == null would test if no string exists.
+                //string.IsNullOrEmpty(value) would test for both of these.
+                //WhiteSpace will check if there's a bunch of spaces instead of Empty.
+                //Could've also done value.Trim() to get rid of empty spaces.
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("Colour is invalid! You must have a colour. Please try again.");
+                }
+                else
+                {
+                    _Colour = value;
+                }
+            }
+        }
 
-    
+        //Constructors
+        /*Optional. If you do not include a constructor for your class,
+         then when an instance of the class is created, the system will assign
+         the normal default values of that data type to the appropriate data member.
+         * If you declare an instance of a constructor within your class definition,
+         then you are responsible for all constructors for the class!
+         They are NOT called directly by the user of the class! It isn't like a method.
+         The constructor will be called when you ask the system to create an instance of the class.*/
+
+        //2 types:
+        //Default constructor
+        /*This is similar to having a system constructor. It replaces them.
+         *It has no parameters. So we assign the default info.
+         * Headers = properties, calling statements = arguments*/
+         //syntax: Public Classname([list of parameters]) {coding body} [This is optional]
+         public Die()
+        {
+            //With no code, this is the same as the system using the default constructor. Ints = 0, everything else would be set to null. Would have to code if you want a greedy constructor.
+            //Could also be altered to put in our own values.
+            //Typically this constructor will have no code. We could assign our own defaults.
+            _Sides = 6;
+            Colour = "Red"; //Can use our property to define this!
+            Roll();
+        }
+
+        //Greedy constructor
+        /*Takes in values for each of our data members/auto properties, which allows the outside 'user' to specify values at time of creation for the instance.
+         * There's a way to create the instance (the argument) and have the program use the constructor (parameters) and set them right away. That's what the greedy constructor does.*/
+        public Die(int sides, string colour)
+        {
+            //This is info coming from the user! Validate that info!
+            Sides = sides;
+            Colour = colour;
+            Roll();
+            //This is a memory pointer assigned to each instance, saying that it is that value. It's implied, not coded. So we could've used this.Sides here.
+            //Could then use this.Sides = Sides. This points to the data member of the class. Without it, it interprets the others Sides as the parameter in the class (local variable).
+        }
+        //The last component we have are behaviours/methods. They interact with the data.
+        /*A method allows the user to:
+        A. Manipulate the data of the instance
+        B. Use the data of the instance to generate some other info.*/
+        
+        public void Roll()
+        {
+            //Will generate a random value for FaceValue.
+            FaceValue = _rnd.Next(1, Sides + 1);
+        }       
+        
     }
 }
