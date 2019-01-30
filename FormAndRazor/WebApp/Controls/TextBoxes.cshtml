@@ -1,0 +1,96 @@
+﻿@{
+    //This file is processed PHYSICALLY from TOP to BOTTOM. 
+
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "TextBoxes";
+
+    //Capture the data returned to the web app (web server)
+    //This data is in strings. Form is a getter.
+    var leftside = Request.Form["leftinput"]; //If the control name doesn't exist, the result is null.
+    var rightside = Request.Form["rightinput"];
+    var thebutton = Request.Form["formbutton"]; //value attribute
+
+
+}
+@section banner {
+    <h1>Textboxes</h1>
+}
+<!--body content area-->
+<!--Processing Logic; make sure to put this before the form! To access C# commands, use the at symbol-->
+@if (IsPost)
+{
+    if(thebutton.Equals("left"))
+    {
+        <p>Hello @leftside . How are you today?</p>
+    }
+    else if (thebutton.Equals("right"))
+    {
+        <p>I see your favourite colour is @rightside . Nice choice!</p>
+    }
+    else //For the reset case
+    {
+        leftside = "";
+        rightside = "";
+    }
+}
+else
+{
+    //Any initialization logic to fill any of your form controls.
+    <p>Enter the requested information.</p>
+}
+<!--Left side/form-->
+    <form id="theform" method="post">
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="leftinput">Your Name:</label>
+                <input type="text" id="leftinput" name="leftinput"
+                       placeholder="Enter your name"
+                       value="@leftside" />
+                <button type="submit" id="formbutton" name="formbutton"
+                        value="left" class="btn">
+                    Press Left
+                </button>
+            </div>
+            <!--Right side-->
+            <div class="col-sm-6">
+                <label for="rightinput">Your Favourite Colour:</label>
+                <input type="text" id="rightinput" name="rightinput"
+                       placeholder="Enter your colour"
+                       value="@rightside" />
+                <button type="submit" id="formbutton" name="formbutton"
+                        value="right" class="btn">
+                    Press Right
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-5">
+                <!--This causes an indent (offset)-->
+                <button type="submit" id="formbutton" name="formbutton"
+                        value="reset" class="btn">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </form>
+<!--If we leave action="" empty, it'll return to the page you were already on. Could always put a # to return to the page.
+    Don't need it if we're staying on the page.
+    Method is a way of getting info. If we want the data to be seen on the URL, use get.
+    Otherwise, use post, the data won't appear on the URL and will be kept internally.
+    bootstrap will split the page into 12 even blocks that you can then divvy up to make a half-half page design.
+    These blocks can be lg, md, sm and xm in terms of size. Tells the page the size of the monitor it deals with.
+    Use sm for laptops instead of md for bigger screens.
+    Offset would indent by the number shown in col-size-#.
+    The name in the for="" should be the same as the name in your field.
+    Input should be identified by the type parameter. The id paramater is used by the browser (client side).
+    The name parameter is used on the server side (label used to receive/identify data when it comes in).
+    Placeholder will have a greyed out prompt in the page.
+    The button is what we press to send back info to the browser. Reset would blank out whatever is sent client side. 
+    Submit needs to be used to get it server side while wiping out the fields on the client's side while retaining the info.
+    Value is a value you can test to determine what button was pressed.
+    The at symbol lets us access things in C#.-->
+
+@section footer{
+    &copy; CPSC1517 Nait 2019, all rights reserved
+}
+

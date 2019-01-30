@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "Radio Buttons";
+    var language = Request.Form["languagegroup"];
+    var script = Request.Form["scriptgroup"];
+    //The first time through, language and script will be null. 
+    //This will cause issues on the check for the radio button test that retains the radio button selection.
+    //To fix the problem, assign an empty string to the variables.
+    if (string.IsNullOrEmpty(language))
+    {
+        language = "";
+    }
+    if (string.IsNullOrEmpty(script))
+    {
+        script = "";
+    }
+}
+@section banner{
+    <h1>Radio Buttons</h1>
+}
+
+@if (IsPost)
+{
+    //Demonstrate validation is possible
+    if (string.IsNullOrEmpty(language) || string.IsNullOrEmpty(script))
+    {
+        <p>
+            <span style="color:crimson">
+                <strong>
+                    Choose from both language and scripting!
+                </strong>
+            </span>
+        </p>
+    }
+    else
+    {
+        if (language.Equals("C#"))
+        {
+            <p>You will greatly enjoy CPSC1517 because we use C#.</p>
+        }
+        else
+        {
+            <p>Too bad. CPSC1517 uses C#.</p>
+        }
+        if (script.Equals("Razor"))
+        {
+            <p>You will greatly enjoy CPSC1517 because we use Razor.</p>
+        }
+        else
+        {
+            <p>Too bad. CPSC1517 uses Razor.</p>
+        }
+    }
+}
+
+<form id="theform" method="post">
+    <div class="row">
+        <div class="col-sm-offset-1">
+            <label for="languagegroup">Select Your Favourite Programming Language</label><br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="C#"
+                   checked ="@(language.Equals("C#")?true:false)" />&nbsp;&nbsp;C#<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="VB" 
+                   checked ="@(language.Equals("VB")?true:false)" />&nbsp;&nbsp;Visual Basic<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="Cobol"
+                   checked ="@(language.Equals("Cobol")?true:false)" />&nbsp;&nbsp;Cobol<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="Fortran" 
+                   checked ="@(language.Equals("Fortran")?true:false)" />&nbsp;&nbsp;Fortran<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="Pascal" 
+                   checked ="@(language.Equals("Pascal")?true:false)" />&nbsp;&nbsp;Pascal<br /><br />
+            <label for="scriptgroup">Select Your Favourite Scripting Code</label><br />
+            <input type="radio" id="scriptgroup" name="scriptgroup" value="JS" 
+                   checked ="@(script.Equals("JS")?true:false)" />&nbsp;&nbsp;Javascript<br />
+            <input type="radio" id="scriptgroup" name="scriptgroup" value="Razor" 
+                   checked ="@(script.Equals("Razor")?true:false)" />&nbsp;&nbsp;Razor<br />
+            <input type="radio" id="scriptgroup" name="scriptgroup" value="PHP"
+                   checked ="@(script.Equals("PHP")?true:false)" />&nbsp;&nbsp;PHP<br /><br />
+            <!--The value is what's attached to the actual control. The data associated w/ that radio button.
+            &nbsp; gives white space. 2 of them give us 2. Remember not to put spaces b/w them, b/c the compiler checks every physical space.
+            Having the same id on all of the controls is what makes it a radio button list.-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-1">
+            <button type="submit" id="formbutton" name="formbutton"
+                    value="Submit" class="btn btn-primary">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+
+@section footer{
+    &copy; CPSC1517 Nait 2019, all rights reserved
+}

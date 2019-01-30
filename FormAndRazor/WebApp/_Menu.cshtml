@@ -1,0 +1,29 @@
+﻿<div class="navbar navbar-default navbar-fixed-top">
+    <!--Branding area-->
+    <div class="navbar-header">
+        <!--branding statement-->
+        <a class="navbar-brand" style="font-size:x-large">
+            <strong>CPSC1517</strong>
+        </a>
+    </div>
+    <!--Menu root items-->
+    <ul class="nav navbar-nav">
+        <!--Menu Root Item-->
+        <li><a href="@Href("~/default.cshtml")">Home</a></li>
+        <!--Could use this if we don't have a drop down menu.-->
+        <!--Drop Down Menu/Submenu-->
+        <li class="dropdown">
+            <!--Place the dropdown root menu item at the root. # means we want to stay on that page.-->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Controls <b class="caret"></b></a>
+            <!--This unordered list is the dropdown menu, so we absolutely need dropdown-menu. Dropdown just starts the overall dropdown.-->
+            <ul class="dropdown-menu">
+                <li><a href="@Href("~/Controls/Textboxes.cshtml")">Textboxes</a></li>
+                <li><a href="@Href("~/Controls/RadioButtons.cshtml")">Radio Buttons</a></li>
+                <li><a href="@Href("~/Controls/Checkboxes.cshtml")">Checkboxes</a></li>
+                <li><a href="@Href("~/Controls/DropDown.cshtml")">Drop Down (Select)</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
