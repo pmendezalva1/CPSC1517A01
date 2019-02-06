@@ -15,13 +15,26 @@
         <li class="dropdown">
             <!--Place the dropdown root menu item at the root. # means we want to stay on that page.-->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Controls <b class="caret"></b></a>
+                Controls <b class="caret"></b>
+            </a>
             <!--This unordered list is the dropdown menu, so we absolutely need dropdown-menu. Dropdown just starts the overall dropdown.-->
             <ul class="dropdown-menu">
                 <li><a href="@Href("~/Controls/Textboxes.cshtml")">Textboxes</a></li>
                 <li><a href="@Href("~/Controls/RadioButtons.cshtml")">Radio Buttons</a></li>
                 <li><a href="@Href("~/Controls/Checkboxes.cshtml")">Checkboxes</a></li>
                 <li><a href="@Href("~/Controls/DropDown.cshtml")">DropDown (Select)</a></li>
+            </ul>
+        </li>
+        <!--Drop Down Menu/Submenu-->
+        <li class="dropdown">
+            <!--Place the dropdown root menu item at the root. # means we want to stay on that page.-->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                DB Pages <b class="caret"></b>
+            </a>
+            <!--This unordered list is the dropdown menu, so we absolutely need dropdown-menu. Dropdown just starts the overall dropdown.-->
+            <ul class="dropdown-menu">
+                <li><a href="@Href("~/DBPages/SingleQuery.cshtml")">Single Query</a></li>
+                <li><a href="@Href("~/DBPages/MultiRecordQuery.cshtml")">Web Query</a></li>
             </ul>
         </li>
     </ul>
