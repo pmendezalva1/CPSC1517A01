@@ -23,7 +23,7 @@
     //this value will be used in titling the WebGrid display
     var categoryname = db.QueryValue(scalarcommand, categoryid);
 
-    var querycommand = "SELECT ProductID, ProductName, UnitPrice, UnitsInStock, Discontinued "
+    var querycommand = "SELECT ProductID, ProductName, UnitPrice, UnitsInStock, Discontinued, GetDate() DATE "
                         + "FROM Products "
                         + "WHERE CategoryID = @0 "
                         + "ORDER BY 2";
@@ -31,8 +31,9 @@
 
     //create an instance of WebGrid
     //notice the collection is passed at the time of instantiation
-
-    var gridinstance = new WebGrid(results);
+    //Changing the # of pages is done when you create your instance.
+    //You can set the # of lines per page using rowsPerPage:n.
+    var gridinstance = new WebGrid(results, rowsPerPage:5);
     //This one actually wants your dataset, so we put in results.
 }
 @section banner{
@@ -42,10 +43,36 @@
 <div class="row">
     <div class="col-sm-12">
         <span style="font-size:x-large"><strong>Products for @categoryname</strong></span>
-        <!--Display the WebGrid instance in its default display-->
+        <!--Display the WebGrid instance in its custom display. Default is xxx.GetHTML() -->
         @gridinstance.GetHtml(
-       tableStyle: "table table-bordered table-striped table-hover")
-        <!--If we use GetHTML alone, we'd get a default table with crowding.-->
+       tableStyle: "table table-bordered table-striped table-hover", mode: WebGridPagerModes.All, firstText: "Start", lastText: "End",
+       columns: gridinstance.Columns(
+           gridinstance.Column(columnName: "ProductID", header: "ID"),
+           gridinstance.Column(columnName: "ProductName", header: "Product"),
+           gridinstance.Column(columnName: "UnitPrice", header: "$",
+            format: (item) => item.UnitPrice.ToString("0.00")), //could also use c, but be careful with it.
+           gridinstance.Column(columnName: "Date", canSort:false,
+            format: (item) => item.Date.ToString("MMM dd, yyyy")),
+           gridinstance.Column(columnName: "Discontinued", header: "Disc", canSort:false,
+            format: @<input name="Discontinued" id="Discontinued" type="checkbox" 
+                            value="@item.Discontinued" disabled="disabled" @(item.Discontinued == true ? "checked" : null)/> ),
+           gridinstance.Column(header: "", 
+            format: @<text>
+                    <a href="~/DBPages/WebGridDestination?pid=@item.ProductID"
+                       onclick="return confirm('Are you sure you want to view @item.ProductName?')">View</a>
+                    </text> )
+))
+        <!--If we use GetHTML alone, we'd get a default table with crowding. WebGridPagerMode helps us determine the start and end of a page, and if we include everything.-->
+        <!--Remember that once you code one instructor, you're responsible for all of it!-->
+        <!--The first column is the property of the webGrid. The second one is the source for the columns for the webGrid. 
+            Inside grid instance columns, we ref a grid instance.column of the columns.-->
+        <!--We can omit the header if we don't want to change the name of the column.-->
+        <!--=> is lambda. Do this against item, for instance.-->
+        <!--4 M's is the who name, 2 small m's is the unit for dates. 
+            If we want to limit our sorting, we use CanSort:false to turn it off. canSort:true to enable.
+            disabled="disabled" prevents us from clicking the checkboxes.
+            onclick is an event/action. Known by the thunderbolt it displays.
+            Remember that double quotes within quotes will screw up code! Use single quotes in double quotes. Some software will want this flipped around.-->
     </div>
 </div>
 
