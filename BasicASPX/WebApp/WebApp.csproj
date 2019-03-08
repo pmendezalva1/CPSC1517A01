@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Content\bootwrap-freecode.css" />
     <Content Include="SamplePages\BasicControls.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -162,6 +163,7 @@
     <Content Include="SamplePages\JobApplication.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootwrap-freecode.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -205,6 +207,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="GridViewData.cs" />
     <Compile Include="SamplePages\BasicControls.aspx.cs">
       <DependentUpon>BasicControls.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
