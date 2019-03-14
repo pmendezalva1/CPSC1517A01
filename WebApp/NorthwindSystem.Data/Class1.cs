@@ -8,5 +8,6 @@ namespace NorthwindSystem.Data
 {
     public class Class1
     {
+
     }
 }
