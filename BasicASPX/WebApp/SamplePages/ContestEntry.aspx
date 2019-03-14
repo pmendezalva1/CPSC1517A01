@@ -17,6 +17,88 @@
         </div>
     </div>
   
+<%--Place all the validation controls in one group. You may have multiple validation controls per field.
+    Fields can only support a single instance of a particular validation control.--%>
+    <%--Required validation--%>
+    <asp:RequiredFieldValidator ID="RequiredFieldFirstName" runat="server" 
+        ErrorMessage="First name is required." Display="None"
+        SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="FirstName">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredFieldLastName" runat="server" 
+        ErrorMessage="Last name is required." Display="None"
+        SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="LastName">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredFieldStreetAddress1" runat="server" 
+        ErrorMessage="Street address is required." Display="None"
+        SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="StreetAddress1">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredFieldCity" runat="server" 
+        ErrorMessage="City is required." Display="None"
+        SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="City">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredFieldPostalCode" runat="server" 
+        ErrorMessage="Postal code is required." Display="None"
+        SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="PostalCode">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredFieldEmail" runat="server" 
+        ErrorMessage="Email address is required." Display="None"
+        SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="EmailAddress">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredFieldCheckAnswer" runat="server" 
+        ErrorMessage="You did not supply an answer to the skill testing question." Display="None"
+        SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="CheckAnswer">
+    </asp:RequiredFieldValidator>
+
+    <%--Range Validator
+        We do not have a sample control to do a range validation. 
+        For this demonstration, StreetAddress2 will be used to demonstrate a range validation.--%>
+    <asp:RangeValidator ID="RangeStreetAddress2" runat="server" 
+        ErrorMessage="Enter a value between 1 (strongly disagree) and 10 (strongly agree)." Display="None" 
+        SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="StreetAddress2" MinimumValue="1" MaximumValue="10" Type="Integer">
+    </asp:RangeValidator>
+
+    <%--Regular Expression (Regex)
+        You can create your own pattern OR since most general patterns have already been well developed,
+        search the net for the acceptable pattern.--%>
+    <asp:RegularExpressionValidator ID="RegularExpressionPostalCode" runat="server" 
+        ErrorMessage="Invalid postal code format. Ex. T6Y7U8"
+        Display="None" SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="PostalCode"
+        ValidationExpression="[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]">
+    </asp:RegularExpressionValidator>
+
+    <asp:RegularExpressionValidator ID="RegularExpressionEmail" runat="server" 
+        ErrorMessage="Invalid postal code format. Ex. T6Y7U8"
+        Display="None" SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="EmailAddress"
+        ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$">
+    </asp:RegularExpressionValidator>
+
+    <%--Compare Validation.--%>
+    <%--  Compare Datatype --%>
+    <%--<asp:CompareValidator ID="CompareStreetAddress2" runat="server" ErrorMessage="Survey value needs to be a number."
+        ForeColor="Crimson" ControlToValidate="StreetAddress2" Display="None" SetFocusOnError="true"
+        Type="Integer">
+    </asp:CompareValidator>--%>
+    <%-- Compare to a constant value --%>
+    <asp:CompareValidator ID="CompareCheckAnswer" runat="server" ErrorMessage="Incorrect skill testing answer."
+        ForeColor="Crimson" ControlToValidate="CheckAnswer" Display="None" SetFocusOnError="true"
+        Type="Integer" Operator="Equal" ValueToCompare="15">
+    </asp:CompareValidator>
+    <%-- Compare to another control 
+        For this example, assume there is a confirm email field.--%>
+   <%-- <asp:CompareValidator ID="CompareConfirmEmailAddress" runat="server" ErrorMessage="Email address not confirmed. Retry."
+        ForeColor="Crimson" ControlToValidate="ConfirmEmailAddress" Display="None" SetFocusOnError="true"
+        Type="String" Operator="Equal" ControlToCompare="EmailAddress">
+    </asp:CompareValidator>--%>
+
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Correct the following concerns and resubmit."
+        CssClass="alert alert-danger"/>
+
     <div class="row">
         <div class ="col-md-6">
             <fieldset class="form-horizontal">
@@ -85,11 +167,12 @@
         <div class="col-md-6">   
             <div class="col-md-offset-2">
                 <p>
-                    <asp:Button ID="Submit" runat="server" Text="Submit" />&nbsp;&nbsp;
-                    <asp:Button ID="Clear" runat="server" Text="Clear" CausesValidation="true"  />
+                    <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" />&nbsp;&nbsp;
+                    <asp:Button ID="Clear" runat="server" Text="Clear" CausesValidation="true" OnClick="Clear_Click"  />
                 </p>
                 <asp:Label ID="Message" runat="server" ></asp:Label><br />
-            
+                <hr style="width:5px" />
+                <asp:GridView ID="ContestEntryList" runat="server"></asp:GridView>
             </div>
         </div>
     </div>

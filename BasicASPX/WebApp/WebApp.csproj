@@ -207,6 +207,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Entries.cs" />
     <Compile Include="GridViewData.cs" />
     <Compile Include="SamplePages\BasicControls.aspx.cs">
       <DependentUpon>BasicControls.aspx</DependentUpon>
