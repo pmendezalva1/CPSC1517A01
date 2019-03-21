@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 #region Additional Namespaces
 using NorthwindSystem.Data; //the .data class
 using NorthwindSystem.DAL; //the DAL context class
+using System.Data.SqlClient; //Required for SQL parameter
 #endregion
 
 namespace NorthwindSystem.BLL
@@ -43,6 +44,31 @@ namespace NorthwindSystem.BLL
             using (var context = new NorthwindContext())
             {
                 return context.Products.ToList(); //Extensions of the DBSet class. Built in.
+            }
+        }
+
+        //This db query is NOT based on the primary key.
+        //.Find is based on the primary key, therefore it cannot be used.
+        //Instead, we will use a Database.SQLQuery<T> method.
+        //T reps w/e table we're talking about. This method will have 1 or more arguments. 
+        //a) The SQL execution request for a procedure
+        //b) Optional. Any parameter(s) needed by (a).
+        //Arguments are specified using New SqlParameter (parameter, value).
+        //Each required argument needs a SQLParameter();
+        //SQL Parameter needs a using clause System.Data.SQLClient
+        
+        public List<Product> Product_GetByCategories(int categoryid)
+        {
+            //Non primary queries
+            using (var context = new NorthwindContext())
+            {
+                //Most data sets are returned from DBSet as an IEnumerable<T> data type.
+                //We convert this datatype to a List<T> using .ToList();
+                IEnumerable<Product> results =
+                    context.Database.SqlQuery<Product>(
+                        "Products_GetByCategories @CategoryID", //a
+                        new SqlParameter("CategoryID", categoryid)); //We don't put on the @ sign for this, but we do for the first portion.
+                return results.ToList();
             }
         }
     }

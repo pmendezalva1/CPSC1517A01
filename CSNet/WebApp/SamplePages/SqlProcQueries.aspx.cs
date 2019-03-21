@@ -49,13 +49,58 @@ namespace WebApp.SamplePages
                 {
                     MessageLabel.Text = ex.Message;
                 }
-
-
             }
-
-
         }
 
-       
+        protected void Submit_Click(object sender, EventArgs e)
+        {
+            //Ensure a selection was made.
+            if (CategoryList.SelectedIndex == 0) //points to physical position in our list
+            {
+                //No selection: Message to the user
+                MessageLabel.Text = "Select a category to view category products.";
+            }
+            else
+            {
+                //Selection: Process request for lookup
+                //User friendly error handling
+                try
+                {
+                    //Create and connect to the appropriate BLL class
+                    ProductController sysmgr = new ProductController();
+                    //Issue the lookup request using the appropriate BLL class method and capture results.
+                    List<Product> results = sysmgr.Product_GetByCategories(int.Parse(CategoryList.SelectedValue));
+                    //Test the results (.Count() == 0 since it's multiple)
+                    if (results.Count() == 0)
+                    {
+                        //No results: Bad, not found message.
+                        MessageLabel.Text = "No products found for requested category.";
+                        //Optional: Clear the previous successful data display.
+                        CategoryProductList.DataSource = null;
+                        CategoryProductList.DataBind();
+                    }
+                    else
+                    {
+                        //Results: Display returned data.
+                        CategoryProductList.DataSource = results;
+                        CategoryProductList.DataBind();
+                        //These load the gridview.
+                    }
+
+                }
+
+                catch (Exception ex)
+                {
+                    MessageLabel.Text = ex.Message;
+                }
+            }          
+        }
+
+        protected void Clear_Click(object sender, EventArgs e)
+        {
+            CategoryList.ClearSelection();
+            CategoryProductList.DataSource = null;
+            CategoryProductList.DataBind();
+        }
     }
 }
