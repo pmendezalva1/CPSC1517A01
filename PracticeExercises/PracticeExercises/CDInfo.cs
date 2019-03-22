@@ -8,7 +8,7 @@ namespace PracticeExercises
     public class CDInfo
     {
         public string ISBN { get; set; }
-        public string Title { get; set; }
+        public string CDTitle { get; set; }
         public string Artists { get; set; }
         public int Year { get; set; }
         public int Tracks { get; set; }
@@ -17,10 +17,10 @@ namespace PracticeExercises
         {
 
         }
-        public CDInfo(string isbn, string title, string artists, int year, int tracks)
+        public CDInfo(string isbn, string cdtitle, string artists, int year, int tracks)
         {
             ISBN = isbn;
-            Title = title;
+            CDTitle = cdtitle;
             Artists = artists;
             Year = year;
             Tracks = tracks;

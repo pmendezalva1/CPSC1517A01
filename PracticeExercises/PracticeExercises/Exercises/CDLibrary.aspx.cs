@@ -16,6 +16,7 @@ namespace PracticeExercises.Exercises
             if (!Page.IsPostBack)
             {
                 SongInfo = new List<CDInfo>();
+                
             }
         }
 
@@ -27,7 +28,7 @@ namespace PracticeExercises.Exercises
         protected void Add_Click(object sender, EventArgs e)
         {
             string isbn = ISBN.Text;
-            string title = Title.Text;
+            string title = CDTitle.Text;
             string artists = Artists.Text;
             int year = int.Parse(Year.Text);
             int tracks = int.Parse(Tracks.Text);

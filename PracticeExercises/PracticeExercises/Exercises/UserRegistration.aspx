@@ -53,7 +53,7 @@
     <asp:RegularExpressionValidator ID="RegularExpressionPassword" runat="server" 
         ErrorMessage="Password must be between 4 and 8 digits long and include at least 1 numeric digit."
         Display="None" SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="Password"
-        ValidationExpression="^(?=.*\d).{4,8}$" />
+        ValidationExpression="^(?=.*\d).{4,8}$">
     </asp:RegularExpressionValidator>
 
     <%--Compare Validation--%>

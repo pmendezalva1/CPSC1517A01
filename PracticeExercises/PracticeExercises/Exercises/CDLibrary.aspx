@@ -14,7 +14,7 @@
 
     <%--Required Validation--%>
     <asp:RequiredFieldValidator ID="RequiredFieldTitle" runat="server" ErrorMessage="Title is required." Display="None"
-         SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="Title"></asp:RequiredFieldValidator>
+         SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="CDTitle"></asp:RequiredFieldValidator>
 
     <asp:RequiredFieldValidator ID="RequiredFieldYear" runat="server" ErrorMessage="Year is required and must be between 1900 and today." Display="None"
          SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="Year"></asp:RequiredFieldValidator>
@@ -23,12 +23,14 @@
          SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="Tracks"></asp:RequiredFieldValidator>
     <%--Compare Validation--%>
     <asp:CompareValidator ID="CompareYear" runat="server" ErrorMessage="Year must be between 1900 and today!" Display="None"
-         SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="Year" ControlToCompare="1900" Operator="GreaterThanEqual"></asp:CompareValidator>
+         SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="Year" ValueToCompare="1900" Operator="GreaterThanEqual"></asp:CompareValidator>
+
+    <asp:CompareValidator ID="CompareTrack" runat="server" ErrorMessage="Tracks must be greater than 0." Display="None"
+         SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="Tracks" ValueToCompare="0" Operator="GreaterThan"></asp:CompareValidator>
     <%--Regex Validation--%>
     
     <%--Range Validation--%>
-    <asp:RegularExpressionValidator ID="RegularExTracks" runat="server" ErrorMessage="Tracks must be greater than 0." Display="None"
-         SetFocusOnError="true" ForeColor="Crimson" ControlToValidate="Tracks" MinimumValue="0" Type="Integer"></asp:RegularExpressionValidator>
+    
 
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Correct the following concerns and resubmit."
         CssClass="alert alert-danger"/>
@@ -43,8 +45,8 @@
 
                 <asp:Button ID="Search" runat="server" Text="Search Online For CD" OnClick="Submit_Click" />
 
-                <asp:Label ID="Label2" runat="server" Text="Title" AssociatedControlID="Title"></asp:Label>
-                <asp:TextBox ID="Title" runat="server" ToolTip="Enter the title of your CD."></asp:TextBox>
+                <asp:Label ID="Label2" runat="server" Text="Title" AssociatedControlID="CDTitle"></asp:Label>
+                <asp:TextBox ID="CDTitle" runat="server" ToolTip="Enter the title of your CD."></asp:TextBox>
 
                 <asp:Label ID="Label3" runat="server" Text="Artist(s)" AssociatedControlID="Artists"></asp:Label>
                 <asp:TextBox ID="Artists" runat="server" ToolTip="Enter the artist(s)." Height="33px" Width="163px"></asp:TextBox>

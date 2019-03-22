@@ -49,13 +49,13 @@ namespace PracticeExercises.Exercises {
         protected global::System.Web.UI.WebControls.CompareValidator CompareYear;
         
         /// <summary>
-        /// RegularExTracks control.
+        /// CompareTrack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExTracks;
+        protected global::System.Web.UI.WebControls.CompareValidator CompareTrack;
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -103,13 +103,13 @@ namespace PracticeExercises.Exercises {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Title control.
+        /// CDTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Title;
+        protected global::System.Web.UI.WebControls.TextBox CDTitle;
         
         /// <summary>
         /// Label3 control.
