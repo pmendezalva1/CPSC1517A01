@@ -13,5 +13,15 @@ namespace PracticeExercises.Exercises
         {
 
         }
+
+        protected void Search_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Add_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
