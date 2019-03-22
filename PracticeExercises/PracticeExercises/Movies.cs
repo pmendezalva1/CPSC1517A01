@@ -7,8 +7,8 @@ namespace PracticeExercises
 {
     public class Movies
     {
-        public string Title { get; set; }
-        public int Year { get; set; }
+        public string MovieTitle { get; set; }
+        public int MovieYear { get; set; }
         public string Media { get; set; }
         public string Rating { get; set; }
         public string Review { get; set; }
@@ -18,10 +18,10 @@ namespace PracticeExercises
         {
 
         }
-        public Movies(string title, int year, string media, string rating, string review, string isbn)
+        public Movies(string movietitle, int movieyear, string media, string rating, string review, string isbn)
         {
-            Title = title;
-            Year = year;
+            MovieTitle = movietitle;
+            MovieYear = movieyear;
             Media = media;
             Rating = rating;
             Review = review;

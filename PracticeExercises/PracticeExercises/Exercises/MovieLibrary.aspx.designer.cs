@@ -31,15 +31,6 @@ namespace PracticeExercises.Exercises {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldYear;
         
         /// <summary>
-        /// RequiredFieldMedia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldMedia;
-        
-        /// <summary>
         /// CompareYear control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace PracticeExercises.Exercises {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator CompareYear;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// Label1 control.
@@ -58,13 +58,13 @@ namespace PracticeExercises.Exercises {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Title control.
+        /// MovieTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Title;
+        protected global::System.Web.UI.WebControls.TextBox MovieTitle;
         
         /// <summary>
         /// Label4 control.
@@ -76,49 +76,31 @@ namespace PracticeExercises.Exercises {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Year control.
+        /// MovieYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Year;
+        protected global::System.Web.UI.WebControls.TextBox MovieYear;
         
         /// <summary>
-        /// Literal1 control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// CBDVD control.
+        /// Media control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CBDVD;
-        
-        /// <summary>
-        /// CBVHS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CBVHS;
-        
-        /// <summary>
-        /// CBFile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CBFile;
+        protected global::System.Web.UI.WebControls.CheckBoxList Media;
         
         /// <summary>
         /// Rating control.
@@ -184,13 +166,13 @@ namespace PracticeExercises.Exercises {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// RatingList control.
+        /// Review control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RatingList;
+        protected global::System.Web.UI.WebControls.DropDownList Review;
         
         /// <summary>
         /// RatingChoice control.
@@ -220,13 +202,13 @@ namespace PracticeExercises.Exercises {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// TextBox2 control.
+        /// ISBN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox ISBN;
         
         /// <summary>
         /// Search control.
@@ -254,5 +236,14 @@ namespace PracticeExercises.Exercises {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Message;
+        
+        /// <summary>
+        /// ListMovies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView ListMovies;
     }
 }

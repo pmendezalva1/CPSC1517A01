@@ -17,18 +17,32 @@ namespace PracticeExercises.Exercises
             {
                 movieList = new List<Movies>();
             }
+        }
+        protected void Search_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        protected void Add_Click(object sender, EventArgs e)
+        {
+            string title = MovieTitle.Text;
+            int year = int.Parse(MovieYear.Text);
+            string review = Review.Text;
+            string rating = Rating.Text;
+            string isbn = ISBN.Text;
+
+            string media = "";
+
+            foreach(ListItem mediatype in Media.Items)
+            {
+                if (mediatype.Selected)
+                {
+                    media += mediatype + " ";
+                }
             }
-    }
-
-    //protected void Search_Click(object sender, EventArgs e)
-    //    {
-
-    //    }
-
-    //    protected void Add_Click(object sender, EventArgs e)
-    //    {
-    //        ListItem movie = new ListItem();
-    //    }
-    }
-//}
+            movieList.Add(new Movies(title, year, media, rating, review, isbn));
+            ListMovies.DataSource = movieList;
+            ListMovies.DataBind();
+        }
+    }    
+}
