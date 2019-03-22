@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserRegistration.aspx.cs" Inherits="PracticeExercises.Exercises.UserRegistration" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <%--Note to self: Add these pages through web form with master!
+        Web.sitemap is added by clicking on the web app and then clicking Add Site Map.
+        Finally, extra validators just in case:
+        (?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$    for 8-10, #s and no special charas
+        ^.*(?=.{8,})(?=.*[\d])(?=.*[\W]).*$     for at least 8 characters, one digit and a number.--%>
     <br /><br />
     <div class="page-header">
         <h1>User Registration</h1>
@@ -104,7 +109,7 @@
                 </p>
                 <asp:Label ID="Message" runat="server" ></asp:Label><br />
                 <hr style="width:5px" />
-                <asp:GridView ID="ContestEntryList" runat="server"></asp:GridView>
+                <asp:GridView ID="InfoList" runat="server"></asp:GridView>
             </div>
         </div>
    </div>
