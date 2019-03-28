@@ -102,5 +102,44 @@ namespace WebApp.SamplePages
             CategoryProductList.DataSource = null;
             CategoryProductList.DataBind();
         }
+
+        protected void CategoryProductList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //The gridview uses the PageIndex to calculate which rows out of your dataset to display; all other rows are ignored.
+            //When switching pages, you MUST set the PageIndex property. 
+            //Data for the new page index will come from the "e" parameter of this method. ^
+            CategoryProductList.PageIndex = e.NewPageIndex;
+
+            //The second step in this method is to refresh the dataset of the control. 
+            //This can be done by reassigning the dataset to the control. 
+            //Since our data collection is coming from the db, depending on the selected category, we need to issue another call to the db.
+            //Then we bind that data to the control.
+            Submit_Click(sender, new EventArgs()); //Pass in an instance of the class here. Don't let ASP.NET webforms get in the way of knowing C#!
+        }
+
+        protected void CategoryProductList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Accessing data on a GridView cell is dependant on the web control datatype.
+            //Syntax for accessing your control: (gvcontrolpointer.FindControl("cellcontrolid") as cellcontroltype).controlaccesstype;
+            //gvcontrolpointer - Reference to the gridview row we're interested in.
+            //cellcontrolid - ID of the control in the cell.
+            //cellcontroltype - Type of web control in the cell (in our case, most are labels).
+            //controlaccesstype - How is the web control accessed (for a label, it's .Text)
+
+            //Personal style.
+            GridViewRow agvrow = CategoryProductList.Rows[CategoryProductList.SelectedIndex];
+            string productid = (agvrow.FindControl("ProductID") as Label).Text;
+            string productname = (agvrow.FindControl("ProductName") as Label).Text;
+            string discontinued = "";
+            if ((agvrow.FindControl("Discontinued") as CheckBox).Checked)
+            {
+                discontinued = "discontinued";
+            }
+            else
+            {
+                discontinued = "available";
+            }
+            MessageLabel.Text = productname + " (" + productid + ") is " + discontinued;
+        }
     }
 }

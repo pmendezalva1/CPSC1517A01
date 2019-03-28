@@ -47,7 +47,7 @@ namespace NorthwindSystem.Data
             }
             set
             {
-                _QuantityPerUnit = string.IsNullOrEmpty(value.Trim()) ? null : value;
+                _QuantityPerUnit = string.IsNullOrEmpty(value) ? null : value; //Don't use .Trim() or it'll break coming back from the db.
             }
         }
         public decimal? UnitPrice { get; set; }
