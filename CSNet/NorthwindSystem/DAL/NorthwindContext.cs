@@ -31,6 +31,6 @@ namespace NorthwindSystem.DAL
         //Create an EntityFramework DbSet<T> for each mapped SQL table. <T> is your class in the .Data project.
         //This is a property.
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Category> Categories { get; set; }
     }
 }
