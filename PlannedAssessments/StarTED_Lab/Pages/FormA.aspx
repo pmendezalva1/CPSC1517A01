@@ -8,64 +8,53 @@
         <ItemTemplate>
             <%# Container.DataItem %>
         </ItemTemplate>
-    </asp:DataList>
+        </asp:DataList>
     <br />
+    <fieldset class="form-horizontal">
+        <legend>Form A: Planned Assessment Add/Edit/Update/Delete</legend>
+    <br />
+        <asp:Label ID="Label1" runat="server" Text="Course: "></asp:Label>&nbsp;
+        <asp:TextBox ID="TextBox1" runat="server" ToolTip="Enter a course name"> </asp:TextBox>&nbsp;&nbsp;
+        <asp:Button ID="SearchPartialName" runat="server" Text="Courses?" OnClick="SearchCoursesPartial_Click" />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:DropDownList ID="CourseList" align="right" runat="server"></asp:DropDownList>
+        &nbsp;&nbsp;
+        <asp:Button ID="SearchPlannedAssessmentsPartial" runat="server" Text="Assessments?" OnClick="SearchPlannedAssessmentsPartial_Click" />&nbsp;
+    <br /><br />
+        <asp:Label ID="Label3" runat="server" Text="Assessments"></asp:Label>
 
-    <table align="center" style="width: 80%">
-    <tr>
-        <td align="right">
-            <asp:Label ID="Label1" runat="server" Text="Course"></asp:Label>&nbsp;</td>
-    <td>
-            <asp:TextBox ID="TextBox1" runat="server">Enter a course name: </asp:TextBox>&nbsp;</td>
-        <td>
-            <asp:Button ID="SearchPartialName" runat="server" Text="Courses?" OnClick="SearchCoursesPartial_Click" />&nbsp;</td>
-    </tr>
-        <tr>
-        <td align="right"></td>
-    <td>
-        <asp:DropDownList ID="CourseList" align="right" runat="server"></asp:DropDownList>&nbsp;</td>
-    &nbsp;&nbsp;
-    <td>
-        <asp:Button ID="SearchPlannedAssessmentsPartial" runat="server" Text="Assessments?" OnClick="SearchPlannedAssessmentsPartial_Click" />&nbsp;</td>
-            </tr>
-        <tr>
-            <td align="right">
-                <asp:Label ID="Label3" runat="server" Text="Assessments"></asp:Label>&nbsp;</td>
-            </td>
-            <td align="center">
-                <asp:GridView ID="CoursesGridView" runat="server" AutoGenerateColumns="False" OnPageIndexChanging="CoursesGridView_PageIndexChanging" CellPadding="5" CellSpacing="5" GridLines="Horizontal">
-                    <AlternatingRowStyle BackColor="#CCCCCC" />
-                    <Columns>
-                        <asp:CommandField ShowSelectButton="true" CausesValidation="False" />
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:Label ID="CourseID" runat="server" Text='<%# Eval("CourseID") %>' Visible="False"></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Name">
-                            <ItemTemplate>
-                                <asp:Label ID="CourseName" runat="server" Text='<%# Eval("CourseName") %>'></asp:Label>
-                            </ItemTemplate>
-                            <HeaderStyle BackColor="#CC99FF" Font-Bold="True" HorizontalAlign="Left" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Description">
-                            <ItemTemplate>
-                                <asp:Label ID="Description" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
-                            </ItemTemplate>
-                            <HeaderStyle BackColor="#CC99FF" Font-Bold="True" HorizontalAlign="Left" />
-                        </asp:TemplateField>
-                    </Columns>
-                    <EditRowStyle BorderStyle="None" />
-                    <PagerSettings FirstPageText="Start" LastPageText="End" PageButtonCount="5" />
-                </asp:GridView>
-            </td>
-        </tr>
-        <tr>
-            <td align="right">
-            <asp:Label ID="Label2" runat="server" Text="Courses"></asp:Label></td>
-            <td><asp:TextBox ID="CourseAssess" runat="server">Select your course: </asp:TextBox>&nbsp;</td>
-            <td><asp:Button ID="Button3" runat="server" Text="Courses?" OnClick="CourseSearch_Click" />&nbsp;</td>
-            <td><asp:DropDownList ID="PlannedAssessmentList" runat="server"></asp:DropDownList></td>
-        </tr>
-    </table>
+        <asp:GridView ID="CoursesGridView" runat="server" AutoGenerateColumns="False" OnPageIndexChanging="CoursesGridView_PageIndexChanging" CellPadding="5" CellSpacing="5" GridLines="Horizontal">
+            <AlternatingRowStyle BackColor="#CCCCCC" />
+            <Columns>
+                <asp:CommandField ShowSelectButton="true" CausesValidation="False" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Label ID="CourseID" runat="server" Text='<%# Eval("CourseID") %>' Visible="False"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Name">
+                    <ItemTemplate>
+                        <asp:Label ID="CourseName" runat="server" Text='<%# Eval("CourseName") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle BackColor="#CC99FF" Font-Bold="True" HorizontalAlign="Left" />
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Description">
+                    <ItemTemplate>
+                        <asp:Label ID="Description" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle BackColor="#CC99FF" Font-Bold="True" HorizontalAlign="Left" />
+                </asp:TemplateField>
+            </Columns>
+            <EditRowStyle BorderStyle="None" />
+            <PagerSettings FirstPageText="Start" LastPageText="End" PageButtonCount="5" />
+        </asp:GridView>
+
+        <br />
+            <asp:Label ID="Label2" runat="server" Text="Courses: "></asp:Label>
+            <asp:TextBox ID="CourseAssess" runat="server" ToolTip="Select your course"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button3" runat="server" Text="Courses?" OnClick="CourseSearch_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:DropDownList ID="PlannedAssessmentList" runat="server" AutoPostBack="true"></asp:DropDownList>
+    </fieldset>
+    <script src="../Scripts/bootwrap-freecode.js"></script>
 </asp:Content>

@@ -14,7 +14,11 @@
                 Here, I'll be listing everything to do with my project, which is A05 - Planned Assessment. 
             </p>
             <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
+                Current issues:
+                -The page will load but the SQL server fails to connect due to phantom issues (ex. unacceptable column name that wasn't called for)
+                -Due to this, the drop down lists won't load.
+                -Searches also fail.
+                -Parser error when trying to boot from Default. Booting from Form A via Ctrl + F5 works just fine.
             </p>
         </div>        
     </div>

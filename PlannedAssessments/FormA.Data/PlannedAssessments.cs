@@ -14,14 +14,25 @@ namespace FormA.Data
     [Table("PlannedAssessments")]
     public class PlannedAssessments
     {
+        private string _CourseID;
         [Key]
         public int AssessmentID { get; set; }
         public string Name { get; set; }
         public int? AssessmentTypeID { get; set; }
         public string Description { get; set; }
-        public int? CourseID { get; set; }
-        public int Weight { get; set; }
+        public string CourseID
+        {
+            get
+            {
+                return _CourseID;
+            }
+            set
+            {
+                _CourseID = string.IsNullOrEmpty(value) ? null : value;
+            }
+
+        }
+        public Int16? Weight { get; set; }
         public bool RequiredPass { get; set; }
-        public string LastModified { get; set; }
     }
 }

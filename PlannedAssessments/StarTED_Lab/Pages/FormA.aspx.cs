@@ -22,9 +22,9 @@ namespace StarTED_Lab.Pages
             Message.DataSource = null;
             Message.DataBind();
             if (!Page.IsPostBack)
-            {                
-                BindCourseList();
+            {
                 BindPlannedAssessmentList();
+                BindCourseList();
                 //BindAssessmentTypesList();
             }
         }
@@ -69,21 +69,26 @@ namespace StarTED_Lab.Pages
             }
         }
 
-        //protected void BindAssessmentTypesList()
-        //{
-        //    try
-        //    {
-        //        AssessmentTypesController sysmgr = new AssessmentTypesController();
-        //        List<AssessmentTypes> datainfo = sysmgr.AssessmentType_List();
-        //        datainfo.Sort((x, y) => x.Name.CompareTo(y.Name));
+        protected void BindAssessmentTypesList()
+        {
+            try
+            {
+                AssessmentTypesController sysmgr = new AssessmentTypesController();
+                List<AssessmentTypes> datainfo = sysmgr.AssessmentType_List();
+                datainfo.Sort((x, y) => x.Name.CompareTo(y.Name));
+                PlannedAssessmentList.DataSource = datainfo;
+                PlannedAssessmentList.DataTextField = nameof(Course.CourseName);
+                PlannedAssessmentList.DataValueField = nameof(Course.CourseID);
+                PlannedAssessmentList.DataBind();
+                PlannedAssessmentList.Items.Insert(0, "select...");
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        errors.Add(GetInnerException(ex)).ToString();
-        //        LoadMessageDisplay(errors, "alert alert-danger");
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                errors.Add(GetInnerException(ex).ToString());
+                LoadMessageDisplay(errors, "alert alert-danger");
+            }
+        }
 
         //Find the innermost errors with this:
         protected Exception GetInnerException(Exception ex)
@@ -102,6 +107,7 @@ namespace StarTED_Lab.Pages
             Message.DataBind();
         }
 
+        //This affects PA! If it can find something, it loads it in the DDL to be clicked on later.
         protected void SearchCoursesPartial_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(SearchPartialName.Text))
@@ -149,7 +155,7 @@ namespace StarTED_Lab.Pages
                 PlannedAssessmentList.DataSource = null;
                 PlannedAssessmentList.DataBind();
             }
-            else if(string.IsNullOrEmpty(CourseAssess.Text))
+            else if (string.IsNullOrEmpty(CourseAssess.Text))
             {
                 errors.Add("Enter a course (partial) name.");
                 LoadMessageDisplay(errors, "alert alert-danger");
@@ -191,11 +197,26 @@ namespace StarTED_Lab.Pages
         {
             CoursesGridView.PageIndex = e.NewPageIndex;
             SearchCoursesPartial_Click(sender, new EventArgs());
-            //GridViewRow cgvrow = CoursesGridView.Rows[CoursesGridView.SelectedIndex];
-            //string courseid = (cgvrow.FindControl("CourseID") as Label).Text;
-            //string coursename = (cgvrow.FindControl("CourseName") as Label).Text;
-            //string description = (cgvrow.FindControl("Description") as Label).Text;
+            GridViewRow cgvrow = CoursesGridView.Rows[CoursesGridView.SelectedIndex];
+            string courseid = (cgvrow.FindControl("CourseID") as Label).Text;
+            string coursename = (cgvrow.FindControl("CourseName") as Label).Text;
+            string description = (cgvrow.FindControl("Description") as Label).Text;
         }
 
+        protected void CourseSearch_Click(object sender, EventArgs e)
+        {
+            string partialname = CourseAssess.Text;
+            if (string.IsNullOrEmpty(partialname))
+            {
+                errors.Add("Please put in a partial course name.");
+                LoadMessageDisplay(errors, "alert alert-danger");
+            }
+            else
+            {
+                CourseList.SelectedValue = CourseAssess.Text;
+                CoursesGridView.DataSource = partialname;
+                CoursesGridView.DataBind();
+            }
+        }
     }
 }

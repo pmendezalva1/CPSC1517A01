@@ -39,5 +39,16 @@ namespace FormA.BLL
                 return results.ToList();
             }
         }
+        public List<Course> Courses_GetByPartialAssessName(int assessmentid, string partialname)
+        {
+            using (var context = new StarTEDContext())
+            {
+                IEnumerable<Course> results =
+                        context.Database.SqlQuery<Course>("Courses_GetByPartialAssessName @AssessmentID, @PartialName",
+                                        new SqlParameter("AssessmentID", assessmentid),
+                                        new SqlParameter("PartialName", partialname));
+                return results.ToList();
+            }
+        }
     }
 }
