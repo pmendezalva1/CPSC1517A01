@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FormA.Data
 {
     [Table("PlannedAssessments")]
-    public class PlannedAssessments
+    public class PlannedAssessment
     {
         private string _CourseID;
         [Key]

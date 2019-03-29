@@ -13,12 +13,12 @@ namespace FormA.DAL
 {
     internal class StarTEDContext:DbContext
     {
-        public StarTEDContext():base("StarTED")
+        public StarTEDContext():base("StarTEDDb")
         {
 
         }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<PlannedAssessments> PlannedAssessments { get; set; }
-        public DbSet<AssessmentTypes> AssessmentTypes { get; set; }
+        public DbSet<PlannedAssessment> PlannedAssessments { get; set; }
+        public DbSet<AssessmentType> AssessmentTypes { get; set; }
     }
 }

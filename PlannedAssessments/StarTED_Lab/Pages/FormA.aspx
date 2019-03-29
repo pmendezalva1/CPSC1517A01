@@ -11,7 +11,7 @@
         </asp:DataList>
     <br />
     <fieldset class="form-horizontal">
-        <legend>Form A: Planned Assessment Add/Edit/Update/Delete</legend>
+        <legend>Form A: Planned Assessment - Insert/Edit/Update/Delete</legend>
     <br />
         <asp:Label ID="Label1" runat="server" Text="Course: "></asp:Label>&nbsp;
         <asp:TextBox ID="PartialName" runat="server" ToolTip="Enter a course name"> </asp:TextBox>&nbsp;&nbsp;

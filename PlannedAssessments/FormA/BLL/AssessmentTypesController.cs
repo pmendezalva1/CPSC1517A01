@@ -14,7 +14,7 @@ namespace FormA.BLL
 {
     public class AssessmentTypesController
     {
-        public AssessmentTypes AssessmentTypes_Get(int assessmenttypeid)
+        public AssessmentType AssessmentTypes_Get(int assessmenttypeid)
         {
             using (var context = new StarTEDContext())
             {
@@ -22,7 +22,7 @@ namespace FormA.BLL
             }
         }
 
-        public List<AssessmentTypes> AssessmentType_List()
+        public List<AssessmentType> AssessmentType_List()
         {
             using (var context = new StarTEDContext())
             {

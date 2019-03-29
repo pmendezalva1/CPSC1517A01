@@ -12,9 +12,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FormA.Data
 {
     [Table ("AssessmentTypes")]
-    public class AssessmentTypes
+    public class AssessmentType
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int AssessmentTypeID { get; set; }
         public string Name { get; set; }
     }
