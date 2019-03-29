@@ -53,6 +53,9 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/Pages/FormA.aspx">A05 Planned Assessment: Form A</a></li>
+                        <li><a runat="server" href="~/Pages/FormB.aspx">A05 Planned Assessment: Form B</a></li>
+                        <li><a runat="server" href="~/Pages/FormC.aspx">A05 Planned Assessment: Form C</a></li>
                     </ul>
                 </div>
             </div>

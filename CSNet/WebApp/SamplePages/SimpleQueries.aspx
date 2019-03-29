@@ -28,7 +28,6 @@
             <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" />&nbsp;
             <asp:Button ID="Clear" runat="server" Text="Clear" CausesValidation="false" OnClick="Clear_Click"/>&nbsp;
                 </td>
-            
         </tr>
     </table>
 </asp:Content>
