@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApp {
+namespace StarTED_Lab {
     
     
-    public partial class _Default {
+    public partial class Default {
     }
 }

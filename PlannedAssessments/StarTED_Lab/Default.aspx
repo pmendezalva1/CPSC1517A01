@@ -1,26 +1,42 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApp._Default" %>
+﻿<%@ Page Title="Default" MasterPageFile="~/Site.Master" Language="C#"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="StarTED_Lab.Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>A05 - Planned Assessment</h1>
-        <p class="lead">Planned Assessment Project by Patricia Mendez-Alva</p>
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
+        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Lab Documententation</h2>
+            <h2>Getting started</h2>
             <p>
-                Here, I'll be listing everything to do with my project, which is A05 - Planned Assessment. 
+                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
+            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
             </p>
             <p>
-                Current issues:
-                -The page will load but the SQL server fails to connect due to phantom issues (ex. unacceptable column name that wasn't called for)
-                -Due to this, the drop down lists won't load.
-                -Searches also fail.
-                -Parser error when trying to boot from Default. Booting from Form A via Ctrl + F5 works just fine.
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
             </p>
-        </div>        
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>
+                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
+            </p>
+            <p>
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>
+                You can easily find a web hosting company that offers the right mix of features and price for your applications.
+            </p>
+            <p>
+                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
+            </p>
+        </div>
     </div>
 
 </asp:Content>
