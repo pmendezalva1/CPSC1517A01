@@ -24,8 +24,8 @@
                 <h3>Known Bugs</h3>
                 <p>
                       Current issues:
-                    <div>When trying to use the search function for Courses, it fails to find our stored procedure "Course_GetByPartialName"</div>
-                    <div>Despite this, somehow the assessments still load. Unfortunately, the need for a course prevents this from working.</div>
+                    <div>When trying to use the search function for Courses, it can't find anything from the database.</div>
+                    <div>Despite this, somehow the assessmentd ddl still load. Unfortunately, the need for a course prevents this from working.</div>
                     <div>The stored procedures seem broken, so I can't test the next phase to see if the gridview will load up.</div>
                     <div>Home and Default fail to redirect for some reason, they don't consider themselves part of the class.</div>
                 </p>
@@ -48,24 +48,11 @@
                     <div>-"public Course Course_Get(int courseid)"</div>
                     <div>-"public List<Course> Course_List()"</div>
                     <div>-"public List<Course> Course_GetByPartialName(string partialname)"</div>
-                    <div>-"public List<Course> Courses_GetByPartialAssessName(int assessmentid, string partialname)"</div>
+                    <div>-"public List<Course> Courses_FindByPartialName(string partialname)"</div>
                     <div>-"public PlannedAssessments PlannedAssessment_Get(int assessmentid)"</div>
                     <div>-"public List<PlannedAssessments> PlannedAssessment_List()"</div>
-                    <div>-"public List<PlannedAssessments> PlannedAssessment_GetByPartialPlannedAssessmentName(int assessmentid, string partialname)"</div>
-                    <h4>To Be Implemented:</h4>
-                    <div>"SELECT CourseID, CourseName, Credits, TotalHours, ClassroomType, Term, Tuition, Description
-                         FROM Courses ORDER BY CourseName"
-                    </div>
-                    <div>
-                        "SELECT AssessmentID, Name, AssessmentTypeID, Description, CourseID, Weight, RequiredPass, LastModified
-                        FROM PlannedAssessments ORDER BY Name"
-                    </div>
-                    <div>
-                        "SELECT AssessmentTypeID, Name from AssessmentTypes ORDER BY Name"
-                    </div>
-                    <div>
-                        "SELECT CourseID, Name FROM PlannedAssessments WHERE CourseID = @0"
-                    </div>
+                    <div>-"public List<Course> Courses_FindByPartialName(string partialname)"</div>
+                  
                 </p>
             </section>
         </div>        

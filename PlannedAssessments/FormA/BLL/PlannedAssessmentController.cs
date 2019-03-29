@@ -28,14 +28,14 @@ namespace FormA.BLL
                 return context.PlannedAssessments.ToList();
             }
         }
-        public List<PlannedAssessments> PlannedAssessment_GetByPartialPlannedAssessmentName(int assessmentid, string partialname)
+        public List<PlannedAssessments> PlannedAssessment_FindByCourse(int assessmentid, string coursename)
         {
             using (var context = new StarTEDContext())
             {
                 IEnumerable<PlannedAssessments> results =
-                    context.Database.SqlQuery<PlannedAssessments>("PlannedAssessment_GetByPartialPlannedAssessmentName @AssessmentID, @PartialName",
+                    context.Database.SqlQuery<PlannedAssessments>("PlannedAssessment_FindByCourse @AssessmentID, @CourseName",
                     new SqlParameter("AssessmentID", assessmentid),                
-                    new SqlParameter("PartialName", partialname));
+                    new SqlParameter("CourseName", coursename));
                 return results.ToList();
             }
         }

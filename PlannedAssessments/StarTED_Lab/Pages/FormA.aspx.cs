@@ -122,7 +122,7 @@ namespace StarTED_Lab.Pages
                 try
                 {
                     CourseController sysmgr = new CourseController();
-                    List<Course> datainfo = sysmgr.Course_GetByPartialName(SearchPartialName.Text);
+                    List<Course> datainfo = sysmgr.Courses_FindByPartialName(SearchPartialName.Text);
                     if (datainfo.Count == 0)
                     {
                         errors.Add("No data found for the partial course name.");
@@ -168,7 +168,7 @@ namespace StarTED_Lab.Pages
                 try
                 {
                     PlannedAssessmentController sysmgr = new PlannedAssessmentController();
-                    List<PlannedAssessments> datainfo = sysmgr.PlannedAssessment_GetByPartialPlannedAssessmentName(
+                    List<PlannedAssessments> datainfo = sysmgr.PlannedAssessment_FindByCourse(
                         int.Parse(PlannedAssessmentList.SelectedValue),
                         CourseAssess.Text);
                     if (datainfo.Count == 0)
