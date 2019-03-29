@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Default" MasterPageFile="~/Site.Master" Language="C#"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="StarTED_Lab.Default" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
@@ -34,7 +33,7 @@
             <section>
                 <h3>Entity Relationship Diagram</h3>
                 <p>
-                    <asp:Image ID="CourseERD" runat="server" src="~/Image/CourseERD.PNG" alt="ERD"/>
+                    <asp:Image ID="CourseERD" runat="server" src="Image/CourseERD.PNG" alt="ERD"/>
                 </p>
             </section>
             <section>

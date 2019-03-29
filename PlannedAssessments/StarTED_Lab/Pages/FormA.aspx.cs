@@ -108,7 +108,7 @@ namespace StarTED_Lab.Pages
         }
 
         //This affects PA! If it can find something, it loads it in the DDL to be clicked on later.
-        protected void SearchCoursesPartial_Click(object sender, EventArgs e)
+        protected void SearchPlannedAssessmentsPartial_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(SearchPartialName.Text))
             {
@@ -122,7 +122,7 @@ namespace StarTED_Lab.Pages
                 try
                 {
                     CourseController sysmgr = new CourseController();
-                    List<Course> datainfo = sysmgr.Courses_FindByPartialName(SearchPartialName.Text);
+                    List<Course> datainfo = sysmgr.Courses_FindByPartialName(PartialName.Text);
                     if (datainfo.Count == 0)
                     {
                         errors.Add("No data found for the partial course name.");
@@ -130,8 +130,14 @@ namespace StarTED_Lab.Pages
                     }
                     else
                     {
-                        datainfo.Sort((x, y) => x.CourseName.CompareTo(y.CourseName));
+                        //datainfo.Sort((x, y) => x.CourseName.CompareTo(y.CourseName));
+                        //foreach (ListItem name in CourseList.Text)
+                        //{
+                        //    if(string.Contains(PartialName.Text))
+                        //    {
 
+                        //    }
+                        //}
                         //GV
                         CoursesGridView.DataSource = datainfo;
                         CoursesGridView.DataBind();
@@ -145,9 +151,10 @@ namespace StarTED_Lab.Pages
             }
         }
 
-        protected void SearchPlannedAssessmentsPartial_Click(object sender, EventArgs e)
+        protected void SearchCoursesPartial_Click(object sender, EventArgs e)
         {
-            if (PlannedAssessmentList.SelectedIndex == 0)
+            //if (PlannedAssessmentList.SelectedIndex == 0)
+            if (string.IsNullOrEmpty(SearchPartialName.Text))
             {
                 //No selection
                 errors.Add("Select a course to view an assessment.");
@@ -155,13 +162,13 @@ namespace StarTED_Lab.Pages
                 PlannedAssessmentList.DataSource = null;
                 PlannedAssessmentList.DataBind();
             }
-            else if (string.IsNullOrEmpty(CourseAssess.Text))
-            {
-                errors.Add("Enter a course (partial) name.");
-                LoadMessageDisplay(errors, "alert alert-danger");
-                CoursesGridView.DataSource = null;
-                CoursesGridView.DataBind();
-            }
+            //else if (string.IsNullOrEmpty(CourseAssess.Text))
+            //{
+            //    errors.Add("Enter a course (partial) name.");
+            //    LoadMessageDisplay(errors, "alert alert-danger");
+            //    CoursesGridView.DataSource = null;
+            //    CoursesGridView.DataBind();
+            //}
             else
             {
                 //Process request for lookup here
@@ -180,9 +187,10 @@ namespace StarTED_Lab.Pages
                     {
                         datainfo.Sort((x, y) => x.Name.CompareTo(y.Name));
 
-                        //GV
-                        CoursesGridView.DataSource = datainfo;
-                        CoursesGridView.DataBind();
+                        CourseList.DataTextField = nameof(Course.Description);
+                        CourseList.DataValueField = nameof(Course.CourseID);
+                        CourseList.DataBind();
+                        //CourseList.Items.Insert(0, "select....");
                     }
                 }
                 catch (Exception ex)
@@ -203,7 +211,7 @@ namespace StarTED_Lab.Pages
             string description = (cgvrow.FindControl("Description") as Label).Text;
         }
 
-        protected void CourseSearch_Click(object sender, EventArgs e)
+        protected void AssessSearch_Click(object sender, EventArgs e)
         {
             string partialname = CourseAssess.Text;
             if (string.IsNullOrEmpty(partialname))

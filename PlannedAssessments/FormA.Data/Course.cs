@@ -4,10 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#region Additional Namespaces
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+#endregion
+
 namespace FormA.Data
 {
+    [Table("Courses")]
     public class Course
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string CourseID { get; set; }
         public string CourseName { get; set; }
         public decimal? Credits { get; set; }

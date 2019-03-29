@@ -14,7 +14,7 @@
         <legend>Form A: Planned Assessment Add/Edit/Update/Delete</legend>
     <br />
         <asp:Label ID="Label1" runat="server" Text="Course: "></asp:Label>&nbsp;
-        <asp:TextBox ID="TextBox1" runat="server" ToolTip="Enter a course name"> </asp:TextBox>&nbsp;&nbsp;
+        <asp:TextBox ID="PartialName" runat="server" ToolTip="Enter a course name"> </asp:TextBox>&nbsp;&nbsp;
         <asp:Button ID="SearchPartialName" runat="server" Text="Courses?" OnClick="SearchCoursesPartial_Click" />
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -47,13 +47,13 @@
                 </asp:TemplateField>
             </Columns>
             <EditRowStyle BorderStyle="None" />
-            <PagerSettings FirstPageText="Start" LastPageText="End" PageButtonCount="5" />
+            <PagerSettings FirstPageText="Start" LastPageText="End" />
         </asp:GridView>
 
         <br />
             <asp:Label ID="Label2" runat="server" Text="Courses: "></asp:Label>
             <asp:TextBox ID="CourseAssess" runat="server" ToolTip="Select your course"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button3" runat="server" Text="Courses?" OnClick="CourseSearch_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="SearchAssess" runat="server" Text="Courses?" OnClick="AssessSearch_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="PlannedAssessmentList" runat="server" AutoPostBack="true"></asp:DropDownList>
     </fieldset>
     <script src="../Scripts/bootwrap-freecode.js"></script>

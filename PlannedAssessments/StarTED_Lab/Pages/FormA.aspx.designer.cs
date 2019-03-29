@@ -31,13 +31,13 @@ namespace StarTED_Lab.Pages {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// PartialName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox PartialName;
         
         /// <summary>
         /// SearchPartialName control.
@@ -103,13 +103,13 @@ namespace StarTED_Lab.Pages {
         protected global::System.Web.UI.WebControls.TextBox CourseAssess;
         
         /// <summary>
-        /// Button3 control.
+        /// SearchAssess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button SearchAssess;
         
         /// <summary>
         /// PlannedAssessmentList control.

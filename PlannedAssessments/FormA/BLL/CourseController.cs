@@ -28,6 +28,21 @@ namespace FormA.BLL
                 return context.Courses.ToList();
             }
         }
+        //public int AddCourse(Course item)
+        //{
+        //    using (var context = new StarTEDContext())
+        //    {
+        //        Course addCourse = context.Courses.Add(item);
+        //    }
+        //}
+        //public void UpdateCourse(Course item)
+        //{
+        //    using (var context = new StarTEDContext())
+        //    {
+                
+        //    }
+        //}
+
 
         public List<Course> Courses_FindByPartialName(string partialname)
         {

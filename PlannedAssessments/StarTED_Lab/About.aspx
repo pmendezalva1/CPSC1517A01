@@ -33,7 +33,7 @@
             <section>
                 <h3>Entity Relationship Diagram</h3>
                 <p>
-                    <asp:Image ID="CourseERD" runat="server" src="~/Image/CourseERD.PNG" alt="ERD"/>
+                    <asp:Image ID="CourseERD" runat="server" src="Image/CourseERD.PNG" alt="ERD"/>
                 </p>
             </section>
             <section>
