@@ -33,12 +33,17 @@ namespace NorthwindSystem.Data
             If we have to supply the PK, it isn't generated so tell the system that! It'll equal none.
             The default option is the same except None is Identity. This is why we don't need to code it.*/
 
-        [Key]
+        [Key] //Remember when it's an identity field like a PK, it doesn't need [Required]. 
+        //Anytime the db doesn't create the value and is required, put that key in!
         public int ProductID { get; set; }
+        [Required(ErrorMessage ="Product name is required!")]
+        [StringLength(40,ErrorMessage ="Product name is limited to 40 characters.")] 
+        //First thing to put in is Max, then a Message, Min. Here we're putting in key word parameters.
         public string ProductName { get; set; }
         //Remember that FKs are nullable! They're noted with ? here
         public int? SupplierID { get; set; }
         public int? CategoryID { get; set; }
+        [StringLength(20, ErrorMessage ="Quantity per unit is limited to 20 characters.")]
         public string QuantityPerUnit //fully implemented to prevent empty strings
         {
             get
@@ -50,9 +55,13 @@ namespace NorthwindSystem.Data
                 _QuantityPerUnit = string.IsNullOrEmpty(value) ? null : value; //Don't use .Trim() or it'll break coming back from the db.
             }
         }
+        [Range(0.00,double.MaxValue, ErrorMessage ="Unit price must be 0.00 or greater.")]
         public decimal? UnitPrice { get; set; }
+        [Range(0, Int16.MaxValue, ErrorMessage ="QoH must be 0 or greater.")]
         public Int16? UnitsInStock { get; set; }
+        [Range(0, Int16.MaxValue, ErrorMessage = "QoO must be 0 or greater.")]
         public Int16? UnitsOnOrder { get; set; }
+        [Range(0, Int16.MaxValue, ErrorMessage = "ROL must be 0 or greater.")]
         public Int16? ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
 

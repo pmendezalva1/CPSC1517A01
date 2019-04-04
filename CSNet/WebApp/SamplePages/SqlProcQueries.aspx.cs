@@ -76,7 +76,11 @@ namespace WebApp.SamplePages
                         //No results: Bad, not found message.
                         MessageLabel.Text = "No products found for requested category.";
                         //Optional: Clear the previous successful data display.
-                        CategoryProductList.DataSource = null;
+                        //CategoryProductList.DataSource = null;
+
+                        //If you have an EmptyDataTemplate, you can assign the empty dataset results to the GridView,
+                        //the empty dataset will trigger the display of the template.
+                        CategoryProductList.DataSource = results;
                         CategoryProductList.DataBind();
                     }
                     else
