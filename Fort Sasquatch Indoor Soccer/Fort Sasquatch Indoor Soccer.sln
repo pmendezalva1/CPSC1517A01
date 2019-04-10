@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigFootWebApp", "BigFootWebApp\BigFootWebApp.csproj", "{55A65A0F-2E93-4948-AF91-B22DD5CA4575}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSISSystem.PMend", "FSISSystem.PMend\FSISSystem.PMend.csproj", "{82AE80F3-44D7-42EF-9AC6-32683DC84C25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSISSystem.PMend.Data", "FSISSystem.PMend.Data\FSISSystem.PMend.Data.csproj", "{25551692-CA7C-4D43-9780-0F54D69013D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{55A65A0F-2E93-4948-AF91-B22DD5CA4575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55A65A0F-2E93-4948-AF91-B22DD5CA4575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55A65A0F-2E93-4948-AF91-B22DD5CA4575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82AE80F3-44D7-42EF-9AC6-32683DC84C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82AE80F3-44D7-42EF-9AC6-32683DC84C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82AE80F3-44D7-42EF-9AC6-32683DC84C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82AE80F3-44D7-42EF-9AC6-32683DC84C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25551692-CA7C-4D43-9780-0F54D69013D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25551692-CA7C-4D43-9780-0F54D69013D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25551692-CA7C-4D43-9780-0F54D69013D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25551692-CA7C-4D43-9780-0F54D69013D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

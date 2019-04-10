@@ -58,7 +58,7 @@ namespace NorthwindSystem.BLL
         //Arguments are specified using New SqlParameter (parameter, value).
         //Each required argument needs a SQLParameter();
         //SQL Parameter needs a using clause System.Data.SQLClient
-        
+
         public List<Product> Product_GetByCategories(int categoryid)
         {
             //Non primary queries
@@ -163,6 +163,54 @@ namespace NorthwindSystem.BLL
             }
         }
 
+        //The update will receive an instance <T> and will have the pkey value
+        //The commit will return the # of rows affected
+        public int Product_Update(Product item)
+        {
+            using (var context = new NorthwindContext())
+            {
+                //Optional: There could be an attribute(s) on your table that track alterations to the db record 
+                //such as Date of Change, Security ID of person making the change 
+                //Assume there is an attribute on the record which records the update date.
+                //item.LastModified = DateTime.Today;
+
+                //Staging: This update approach will update the entire record on the db that matches the pkey value of the instance
+                context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                //Commit: Execution returns the # of rows affected
+                return context.SaveChanges();
+            }
+        }
+
+        //Delete: Will remove the record physically from the db
+        //Logical: Will usually set an attribute on the db record indicating that the record should be ignored in normal processing
+        //Input: Only the pkey is required
+        //Output: # of rows affected
+        public int Product_Delete(int productid)
+        {
+            using (var context = new NorthwindContext())
+            {
+                ////Physical: Find record on db to delete
+                //var existing = context.Products.Find(productid);
+                ////Remove the instance (staging)
+                //context.Products.Remove(existing);
+                ////Commit
+                //return context.SaveChanges();
+
+                //Logical: Find record on db to 'delete'
+                var existing = context.Products.Find(productid);
+                //Staging: The attribute used to flag the records as a logical delete should be set by the controller method
+                //and NOT be relied upon by the user.
+                existing.Discontinued = true;
+                //existing.LastModified = DateTime.Now; as an update
+
+                //The staging for a logical delete is actually an update.
+                context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+
+                //commit
+                return context.SaveChanges();
+
+            }
+        }
 
         #endregion
     }//end of class (eoc)

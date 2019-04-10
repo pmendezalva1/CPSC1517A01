@@ -7,36 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BigFootWebApp {
+namespace BigFootWebApp.ExercisePages {
     
     
-    public partial class SiteMaster {
+    public partial class Default {
         
         /// <summary>
-        /// SiteNav control.
+        /// GuardiansList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu SiteNav;
+        protected global::System.Web.UI.WebControls.DropDownList GuardiansList;
         
         /// <summary>
-        /// SiteMapDS control.
+        /// Submit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDS;
+        protected global::System.Web.UI.WebControls.Button Submit;
         
         /// <summary>
-        /// MainContent control.
+        /// Clear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Button Clear;
     }
 }

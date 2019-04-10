@@ -80,7 +80,7 @@ namespace WebApp.SamplePages
 
                         //If you have an EmptyDataTemplate, you can assign the empty dataset results to the GridView,
                         //the empty dataset will trigger the display of the template.
-                        CategoryProductList.DataSource = results;
+                        CategoryProductList.DataSource = null;
                         CategoryProductList.DataBind();
                     }
                     else

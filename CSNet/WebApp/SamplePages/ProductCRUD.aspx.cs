@@ -27,7 +27,7 @@ namespace WebApp.NorthwindPages
             Message.DataBind();
             //Other page initialization
 
-            if(!Page.IsPostBack)
+            if (!Page.IsPostBack)
             {
                 BindProductList();
                 BindSupplierList();
@@ -123,21 +123,43 @@ namespace WebApp.NorthwindPages
 
         protected void Search_Click(object sender, EventArgs e)
         {
-
+            if (ProductList.SelectedIndex == 0)
+            {
+                errormsgs.Add("Please choose a product.");
+            }
+            else
+            {
+                ProductController sysmgr = new ProductController();
+                List<Product> results = sysmgr.Products_GetByCategoryAndName(int.Parse(ProductID.Text.Trim()));
+                try
+                {
+                    BindProductList();
+                    ProductList.SelectedValue = ProductName.Text;
+                }
+                catch (Exception ex)
+                {
+                    errormsgs.Add(GetInnerException(ex).ToString());
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
+                }
+            }
         }
 
         protected void Clear_Click(object sender, EventArgs e)
         {
-
+            CategoryList.ClearSelection();
+            SupplierList.ClearSelection();
+            ProductList.ClearSelection();
+            Message.DataSource = null;
+            Message.DataBind();
         }
 
         protected void AddProduct_Click(object sender, EventArgs e)
         {
             //if (Page.IsValid)
             //{
-                //W/o validation controls, this command won't work!
-                //Any other logical validation for your data goes here.
-                //Ex. Assume the foreign keys SupplierID and CategoryID are required.
+            //W/o validation controls, this command won't work!
+            //Any other logical validation for your data goes here.
+            //Ex. Assume the foreign keys SupplierID and CategoryID are required.
             if (SupplierList.SelectedIndex == 0)
             {
                 errormsgs.Add("Select a supplier.");
@@ -149,9 +171,9 @@ namespace WebApp.NorthwindPages
                 //But if done indiv and add the error message to the list, can test that list to see if we got through all logical validation.
                 errormsgs.Add("Select a category.");
             }
-            
+
             //Check if all logical validation was successful.
-            if(errormsgs.Count() > 0)
+            if (errormsgs.Count() > 0)
             {
                 //Means we failed; some bad validation.
                 LoadMessageDisplay(errormsgs, "alert alert-info");
@@ -168,7 +190,7 @@ namespace WebApp.NorthwindPages
                     item.SupplierID = int.Parse(SupplierList.SelectedValue);
                     item.CategoryID = int.Parse(CategoryList.SelectedValue);
                     item.QuantityPerUnit = string.IsNullOrEmpty(QuantityPerUnit.Text.Trim()) ? null : QuantityPerUnit.Text.Trim();
-                    if(string.IsNullOrEmpty(UnitPrice.Text.Trim()))
+                    if (string.IsNullOrEmpty(UnitPrice.Text.Trim()))
                     {
                         item.UnitPrice = null;
                     }
@@ -176,7 +198,7 @@ namespace WebApp.NorthwindPages
                     {
                         item.UnitPrice = decimal.Parse(UnitPrice.Text.Trim());
                     }
-                    if(string.IsNullOrEmpty(UnitsInStock.Text.Trim()))
+                    if (string.IsNullOrEmpty(UnitsInStock.Text.Trim()))
                     {
                         item.UnitsInStock = null;
                     }
@@ -184,7 +206,7 @@ namespace WebApp.NorthwindPages
                     {
                         item.UnitsInStock = Int16.Parse(UnitsInStock.Text.Trim());
                     }
-                    if(string.IsNullOrEmpty(UnitsOnOrder.Text.Trim()))
+                    if (string.IsNullOrEmpty(UnitsOnOrder.Text.Trim()))
                     {
                         item.UnitsOnOrder = null;
                     }
@@ -192,6 +214,7 @@ namespace WebApp.NorthwindPages
                     {
                         item.UnitsOnOrder = Int16.Parse(UnitsOnOrder.Text.Trim());
                     }
+                    //Logically, this is a new product, NOT a discontinued product.
                     item.Discontinued = false;
                     //Connect to the appropriate BLL controller for <T>
                     ProductController sysmgr = new ProductController();
@@ -242,11 +265,203 @@ namespace WebApp.NorthwindPages
 
         protected void UpdateProduct_Click(object sender, EventArgs e)
         {
+            //if (Page.IsValid)
+            //{
+            //W/o validation controls, this command won't work!
+            //Any other logical validation for your data goes here.
+            //Ex. Assume the foreign keys SupplierID and CategoryID are required.
+            if (SupplierList.SelectedIndex == 0)
+            {
+                errormsgs.Add("Select a supplier.");
+            }
+            //else
+            if (CategoryList.SelectedIndex == 0)
+            {
+                //Would only capture 1 error at a time through the logical items.
+                //But if done indiv and add the error message to the list, can test that list to see if we got through all logical validation.
+                errormsgs.Add("Select a category.");
+            }
 
+            //On the update, you must have the pkey of the record that is being processed.
+            if (string.IsNullOrEmpty(ProductID.Text.Trim()))
+            {
+                errormsgs.Add("Search for the product you wish to maintain.");
+            }
+            //Check if all logical validation was successful.
+            if (errormsgs.Count() > 0)
+            {
+                //Means we failed; some bad validation.
+                LoadMessageDisplay(errormsgs, "alert alert-info");
+            }
+            else
+            {
+                //Assume your validation is successful and you can proceed with adding the data to the db.
+                try
+                {
+                    //Create an instance of your <T>
+                    Product item = new Product();
+                    //Extract data from form and load your instance of <T>
+
+                    //In addition to the non-PKey fields being accessed and loaded, the pkey value MUST also be loaded.
+                    item.ProductID = int.Parse(ProductID.Text.Trim());
+
+                    item.ProductName = ProductName.Text.Trim();
+                    item.SupplierID = int.Parse(SupplierList.SelectedValue);
+                    item.CategoryID = int.Parse(CategoryList.SelectedValue);
+                    item.QuantityPerUnit = string.IsNullOrEmpty(QuantityPerUnit.Text.Trim()) ? null : QuantityPerUnit.Text.Trim();
+                    if (string.IsNullOrEmpty(UnitPrice.Text.Trim()))
+                    {
+                        item.UnitPrice = null;
+                    }
+                    else
+                    {
+                        item.UnitPrice = decimal.Parse(UnitPrice.Text.Trim());
+                    }
+                    if (string.IsNullOrEmpty(UnitsInStock.Text.Trim()))
+                    {
+                        item.UnitsInStock = null;
+                    }
+                    else
+                    {
+                        item.UnitsInStock = Int16.Parse(UnitsInStock.Text.Trim());
+                    }
+                    if (string.IsNullOrEmpty(UnitsOnOrder.Text.Trim()))
+                    {
+                        item.UnitsOnOrder = null;
+                    }
+                    else
+                    {
+                        item.UnitsOnOrder = Int16.Parse(UnitsOnOrder.Text.Trim());
+                    }
+
+                    //During an update, you need to take the ACTUAL value that is in the field
+                    item.Discontinued = Discontinued.Checked;
+                    //Connect to the appropriate BLL controller for <T>
+                    ProductController sysmgr = new ProductController();
+                    //Issue the appropriate BLL controller method to process <T>
+                    int rowsaffected = sysmgr.Product_Update(item);
+                    //Process any returning information from the controller method and issue a success message.
+                    //Did the db REALLY get updated? 
+                    if (rowsaffected == 0)
+                    {
+                        errormsgs.Add(ProductName.Text + " has not been updated. Search for the product again.");
+                        LoadMessageDisplay(errormsgs, "alert alert-warning");
+                        BindProductList();
+                    }
+                    else
+                    {
+                        errormsgs.Add(ProductName.Text + " has been updated.");
+                        LoadMessageDisplay(errormsgs, "alert alert-success");
+                        BindProductList();
+                        ProductList.SelectedValue = ProductID.Text;
+                    }
+                }
+                catch (DbUpdateException ex)
+                {
+                    UpdateException updateException = (UpdateException)ex.InnerException;
+                    if (updateException.InnerException != null)
+                    {
+                        errormsgs.Add(updateException.InnerException.Message.ToString());
+                    }
+                    else
+                    {
+                        errormsgs.Add(updateException.Message);
+                    }
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            errormsgs.Add(validationError.ErrorMessage);
+                        }
+                    }
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
+                }
+                catch (Exception ex)
+                {
+                    errormsgs.Add(GetInnerException(ex).ToString());
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
+                }
+            }
         }
-
         protected void RemoveProduct_Click(object sender, EventArgs e)
         {
+            //On the delete, you must have the pkey of the record that is being processed.
+            if (string.IsNullOrEmpty(ProductID.Text.Trim()))
+            {
+                errormsgs.Add("Search for the product you wish to maintain.");
+            }
+            //Check if all logical validation was successful.
+            if (errormsgs.Count() > 0)
+            {
+                //Means we failed; some bad validation.
+                LoadMessageDisplay(errormsgs, "alert alert-info");
+            }
+            else
+            {
+                //Assume your validation is successful and you can proceed with deleting the data to the db.
+                try
+                {                    
+                    //Connect to the appropriate BLL controller for <T>
+                    ProductController sysmgr = new ProductController();
+                    //Issue the appropriate BLL controller method to process <T>
+                    int rowsaffected = sysmgr.Product_Delete(int.Parse(ProductID.Text.Trim()));
+                    //Process any returning information from the controller method and issue a success message.
+                    //Did the db REALLY get updated? 
+                    if (rowsaffected == 0)
+                    {
+                        errormsgs.Add(ProductName.Text + " has not been discontinued. Search for the product again.");
+                        LoadMessageDisplay(errormsgs, "alert alert-warning");
+                        BindProductList();
+                    }
+                    else
+                    {
+                        errormsgs.Add(ProductName.Text + " has been discontinued.");
+                        LoadMessageDisplay(errormsgs, "alert alert-success");
+                        BindProductList();
+                        //Dependent on whether the record is a physical or logical delete
+                        //Kept for logical
+                        Discontinued.Checked = true;
+                        ProductList.SelectedValue = ProductID.Text;
+
+                        //On a physical delete, optionally clear the fields
+                        Clear_Click(sender, new EventArgs());
+                    }
+                }
+                catch (DbUpdateException ex)
+                {
+                    UpdateException updateException = (UpdateException)ex.InnerException;
+                    if (updateException.InnerException != null)
+                    {
+                        errormsgs.Add(updateException.InnerException.Message.ToString());
+                    }
+                    else
+                    {
+                        errormsgs.Add(updateException.Message);
+                    }
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            errormsgs.Add(validationError.ErrorMessage);
+                        }
+                    }
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
+                }
+                catch (Exception ex)
+                {
+                    errormsgs.Add(GetInnerException(ex).ToString());
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
+                }
+            }
+
 
         }
     }
