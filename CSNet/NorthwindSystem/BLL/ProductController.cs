@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using NorthwindSystem.Data; //the .data class
 using NorthwindSystem.DAL; //the DAL context class
 using System.Data.SqlClient; //Required for SQL parameter
+using System.ComponentModel;
 #endregion
 
 namespace NorthwindSystem.BLL
@@ -15,6 +16,7 @@ namespace NorthwindSystem.BLL
     //The classes within the BLL are referred to as your interface. These classes will be xalled by your webapp. They're public.
     //For ease of maintenance, each class will represent a specific data class, ie. Product.
 
+    [DataObject]
     public class ProductController
     {
         #region Queries
@@ -22,6 +24,8 @@ namespace NorthwindSystem.BLL
         //Create a method to find a specific record on the SQL table. This will be done by the primary key.
         //Input: search arg value, output: results of the search > single Product record for this case.
         //This method is public.
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public Product Product_Get(int productid)
         {
             //Connect to the appropriate context class to access the db.
@@ -41,6 +45,7 @@ namespace NorthwindSystem.BLL
         //Input: None
         //Output: List<T> where <T> is the appropriate data class (Product)
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Product> Product_List()
         {
             using (var context = new NorthwindContext())
@@ -59,6 +64,7 @@ namespace NorthwindSystem.BLL
         //Each required argument needs a SQLParameter();
         //SQL Parameter needs a using clause System.Data.SQLClient
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Product> Product_GetByCategories(int categoryid)
         {
             //Non primary queries
@@ -139,6 +145,8 @@ namespace NorthwindSystem.BLL
         //The add method will be responsible for adding an instance of Product to the db (via DBSet<T>).
         //Input: Instance of Product class
         //Output: Optional, on a identity pkey, return the new pkey value
+
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public int Product_Add(Product item)
         {
             //Work will be done in a transaction block
@@ -165,6 +173,8 @@ namespace NorthwindSystem.BLL
 
         //The update will receive an instance <T> and will have the pkey value
         //The commit will return the # of rows affected
+
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
         public int Product_Update(Product item)
         {
             using (var context = new NorthwindContext())
@@ -185,6 +195,8 @@ namespace NorthwindSystem.BLL
         //Logical: Will usually set an attribute on the db record indicating that the record should be ignored in normal processing
         //Input: Only the pkey is required
         //Output: # of rows affected
+
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
         public int Product_Delete(int productid)
         {
             using (var context = new NorthwindContext())

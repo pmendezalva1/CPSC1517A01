@@ -130,7 +130,7 @@ namespace WebApp.NorthwindPages
             else
             {
                 ProductController sysmgr = new ProductController();
-                List<Product> results = sysmgr.Products_GetByCategoryAndName(int.Parse(ProductID.Text.Trim()));
+                List<Product> results = sysmgr.Product_GetByCategories(int.Parse(ProductID.Text.Trim()));
                 try
                 {
                     BindProductList();
