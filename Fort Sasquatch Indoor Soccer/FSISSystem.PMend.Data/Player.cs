@@ -62,7 +62,7 @@ namespace FSISSystem.PMend.Data
         }
 
         [NotMapped]
-        public string FullNamne
+        public string FullName
         {
             get { return LastName + " " + FirstName; }
             

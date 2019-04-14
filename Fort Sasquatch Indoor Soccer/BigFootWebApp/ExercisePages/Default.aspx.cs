@@ -61,19 +61,35 @@ namespace BigFootWebApp.ExercisePages
             Message.DataBind();
         }
 
-        protected void GuardianList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Submit_Click(object sender, EventArgs e)
         {
-
+            if (GuardianList.SelectedIndex == 0)
+            {
+                errormsgs.Add("Please select one of the guardians.");
+                LoadMessageDisplay(errormsgs, "alert alert-info");
+            }
+            else
+            {
+                GuardianController sysmgr = new GuardianController();
+                List<Guardian> datainfo = sysmgr.Guardian_Find(int.Parse(GuardianID.Text.Trim()));
+                try
+                {
+                    BindGuardianList();
+                    GuardianList.SelectedValue = FirstName.Text;
+                }
+                catch (Exception ex)
+                {
+                    errormsgs.Add(GetInnerException(ex).ToString());
+                    LoadMessageDisplay(errormsgs, "alert alert-danger");
+                }
+            }
         }
 
         protected void Clear_Click(object sender, EventArgs e)
         {
-
+            GuardianList.ClearSelection();
+            Message.DataSource = null;
+            Message.DataBind();
         }
     }
 }

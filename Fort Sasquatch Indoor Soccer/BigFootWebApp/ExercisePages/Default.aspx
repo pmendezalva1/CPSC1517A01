@@ -21,35 +21,44 @@
 
     <div class="col-md-6">
         <fieldset class="form-horizontal">
-            <legend>Guardian Records Display</legend>
-        <asp:DropDownList ID="GuardiansList" runat="server">
+            <legend>Guardian Records Search</legend>
+        <asp:DropDownList ID="GuardianList" runat="server" OnSelectedIndexChanged="GuardianList_SelectedIndexChanged">
         </asp:DropDownList>
     <br /><br />
-        <asp:Button ID="Submit" runat="server" Text="Submit" />&nbsp;
-        <asp:Button ID="Clear" runat="server" Text="Clear" />
-        <br />
-
-        <table class="nav-justified">
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
+        <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" />&nbsp;
+        <asp:Button ID="Clear" runat="server" Text="Clear" OnClick="Clear_Click" />
 
         <br />
         </fieldset>
         </div>
+    <div class="col-md-6">
+        <fieldset class="form-horizontal">
+            <legend>Guardian Information</legend>
+            <asp:Label ID="Label1" runat="server" Text="Guardian ID:" Font-Bold="True"
+                 AssociatedControlID="GuardianID"></asp:Label>
+        &nbsp;<asp:Label ID="GuardianID" runat="server"></asp:Label>
+
+            <br />
+            <asp:Label ID="Label2" runat="server" Font-Bold="True" Text="First Name:"
+                 AssociatedControlID="FirstName"></asp:Label>
+&nbsp;<asp:TextBox ID="FirstName" runat="server"></asp:TextBox>
+
+            <br />
+            <asp:Label ID="Label3" runat="server" Font-Bold="True" Text="Last Name:"
+                 AssociatedControlID="LastName"></asp:Label>
+&nbsp;<asp:TextBox ID="LastName" runat="server"></asp:TextBox>
+
+            <br />
+            <asp:Label ID="Label4" runat="server" Font-Bold="True" Text="Emergency Phone Number:"
+                 AssociatedControlID="EmergencyPhoneNumber"></asp:Label>
+&nbsp;<asp:TextBox ID="EmergencyPhoneNumber" runat="server"></asp:TextBox>
+
+            <br />
+            <asp:Label ID="Label5" runat="server" Font-Bold="True" Text="Email Address:"
+                 AssociatedControlID="EmailAddress"></asp:Label>
+&nbsp;<asp:TextBox ID="EmailAddress" runat="server"></asp:TextBox>
+
+        </fieldset>
+    </div>
     <script src="../Scripts/bootwrap-freecode.js"></script>
 </asp:Content>

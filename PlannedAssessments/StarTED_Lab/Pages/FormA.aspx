@@ -20,13 +20,23 @@
 
         <br />
         <asp:Label ID="Label3" runat="server" Text="Assessments:" Font-Bold="True"></asp:Label>&nbsp;
-        <asp:DropDownList ID="CourseList" align="right" runat="server" OnSelectedIndexChanged="CourseList_SelectedIndexChanged"></asp:DropDownList>
+        <asp:DropDownList ID="CourseList" align="right" runat="server"></asp:DropDownList>
         &nbsp;&nbsp;
         <asp:Button ID="SearchPlannedAssessments" runat="server" Text="Assessments?" OnClick="SearchPlannedAssessments_Click" />&nbsp;
     <br />
 
         <br />
-        <asp:GridView ID="AssessmentsGridView" runat="server" AutoGenerateColumns="False" OnPageIndexChanging="AssessmentsGridView_PageIndexChanging" CellPadding="5" CellSpacing="5" GridLines="Horizontal" OnSelectedIndexChanged="AssessmentsGridView_SelectedIndexChanged">
+        <asp:GridView ID="AssessmentsGridView" runat="server" 
+            Caption="Planned Assessments"
+            CaptionAlign="Top"
+            AutoGenerateColumns="False" 
+            OnPageIndexChanging="AssessmentsGridView_PageIndexChanging" 
+            CellPadding="5" 
+            CellSpacing="5"
+            AllowPaging="true"
+            PageSize="10"
+            GridLines="Horizontal" 
+            OnSelectedIndexChanged="AssessmentsGridView_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <Columns>
                 <asp:CommandField ShowSelectButton="true" CausesValidation="False" />
@@ -39,13 +49,13 @@
                     <ItemTemplate>
                         <asp:Label ID="Name" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                     </ItemTemplate>
-                    <HeaderStyle BackColor="#CC99FF" Font-Bold="True" HorizontalAlign="Left" />
+                    <HeaderStyle BackColor="Silver" Font-Bold="True" HorizontalAlign="Left" Font-Strikeout="False" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Assessment Type ID">
                     <ItemTemplate>
                         <asp:Label ID="AssessmentTypeID" runat="server" Text='<%# Eval("AssessmentTypeID") %>'></asp:Label>
                     </ItemTemplate>
-                    <HeaderStyle BackColor="#CC99FF" />
+                    <HeaderStyle BackColor="Silver" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Description">
                     <ItemTemplate>
@@ -54,19 +64,19 @@
                     <ItemTemplate>
                         <asp:Label ID="Description" runat="server" Text='<%# Eval("CourseID") %>'></asp:Label>
                     </ItemTemplate>
-                    <HeaderStyle BackColor="#CC99FF" Font-Bold="True" HorizontalAlign="Left" />
+                    <HeaderStyle BackColor="Silver" Font-Bold="True" HorizontalAlign="Left" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Course ID">
                     <ItemTemplate>
                         <asp:Label ID="CourseID" runat="server" Text='<%# Eval("CourseID") %>'></asp:Label>
                     </ItemTemplate>
-                    <HeaderStyle BackColor="#CC99FF" />
+                    <HeaderStyle BackColor="Silver" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Weight">
                     <ItemTemplate>
                         <asp:Label ID="Weight" runat="server" Text='<%# Eval("Weight") %>'></asp:Label>
                     </ItemTemplate>
-                    <HeaderStyle BackColor="#CC99FF" />
+                    <HeaderStyle BackColor="Silver" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Required Pass">
                     <ItemTemplate>
@@ -74,7 +84,7 @@
                             Checked='<%# Eval("RequiredPass") %>' 
                             Enabled="false"/>
                     </ItemTemplate>
-                    <HeaderStyle BackColor="#CC99FF" />
+                    <HeaderStyle BackColor="Silver" />
                 </asp:TemplateField>
             </Columns>
             <EditRowStyle BorderStyle="None" />
@@ -96,7 +106,7 @@
         <br />
         <asp:Label ID="Label6" runat="server" Font-Bold="True" Text="Assessment Type ID:"
              AssociatedControlID="AssessmentList"></asp:Label>
-&nbsp;<asp:DropDownList ID="AssessmentList" runat="server" OnSelectedIndexChanged="AssessmentList_SelectedIndexChanged">
+&nbsp;<asp:DropDownList ID="AssessmentList" runat="server">
         </asp:DropDownList>
         <br />
         <asp:Label ID="Label7" runat="server" Font-Bold="True" Text="Description:"

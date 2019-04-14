@@ -16,6 +16,8 @@ namespace A05_System.Data
     {
         [Key]
         public int AssessmentTypeID { get; set; }
+        [Required(ErrorMessage ="Name is required!")]
+        [StringLength(50, ErrorMessage ="Name is limited to 50 characters.")]
         public string Name { get; set; }
     }
 }

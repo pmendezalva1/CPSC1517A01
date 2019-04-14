@@ -17,9 +17,14 @@ namespace A05_System.Data
         private string _CourseID;
         [Key]
         public int AssessmentID { get; set; }
+        [Required(ErrorMessage ="Name is required!")]
+        [StringLength(50, ErrorMessage ="Name is limited to 50 characters.")]
         public string Name { get; set; }
         public int? AssessmentTypeID { get; set; }
+        [Required(ErrorMessage ="Description is required!")]
+        [StringLength(250, ErrorMessage ="Description is limited to 250 characters.")]
         public string Description { get; set; }
+        [Required(ErrorMessage ="Course ID is required!")]
         public string CourseID
         {
             get
@@ -33,6 +38,7 @@ namespace A05_System.Data
 
         }
         public Int16? Weight { get; set; }
+        [Required(ErrorMessage ="Required pass must be set.")]
         public bool RequiredPass { get; set; }
     }
 }

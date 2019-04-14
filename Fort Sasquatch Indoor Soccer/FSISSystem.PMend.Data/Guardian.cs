@@ -30,7 +30,7 @@ namespace FSISSystem.PMend.Data
         public string EmailAddress { get; set; }
 
         [NotMapped]
-        public string FullNamne
+        public string FullName
         {
             get { return LastName + " " + FirstName; }
 

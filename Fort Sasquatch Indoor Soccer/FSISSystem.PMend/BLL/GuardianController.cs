@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using FSISSystem.PMend.Data; //Obtains <T> Defs
 using FSISSystem.PMend.DAL; //Obtains context class
 using System.Data.Entity;
+using System.Data.SqlClient;
 #endregion
 
 namespace FSISSystem.PMend.BLL
 {
+    
     public class GuardianController
     {
         public List<Guardian> Guardian_List()
@@ -25,7 +27,11 @@ namespace FSISSystem.PMend.BLL
         {
             using (var context = new FSISContext())
             {
-                return context.Guardians.Find(guardianid);
+                IEnumerable<Guardian> results =
+                    context.Database.SqlQuery<Guardian>(
+                        "Guardian_Find @GuardianID",
+                        new SqlParameter("GuardianID", guardianid));
+                return results.ToList();
             }
         }
     }
