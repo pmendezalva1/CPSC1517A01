@@ -5,15 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 #region Additional Namespaces
-using FormA.Data;
-using FormA.DAL;
+using System.ComponentModel;
+using A05_System.Data;
+using A05_System.DAL;
 using System.Data.SqlClient;
+
 #endregion
 
-namespace FormA.BLL
+namespace A05_System.BLL
 {
+    [DataObject]
     public class CourseController
     {
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public Course Course_Get(int courseid)
         {
             using (var context = new StarTEDContext())
@@ -28,22 +32,8 @@ namespace FormA.BLL
                 return context.Courses.ToList();
             }
         }
-        //public int AddCourse(Course item)
-        //{
-        //    using (var context = new StarTEDContext())
-        //    {
-        //        Course addCourse = context.Courses.Add(item);
-        //    }
-        //}
-        //public void UpdateCourse(Course item)
-        //{
-        //    using (var context = new StarTEDContext())
-        //    {
-                
-        //    }
-        //}
 
-
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Course> Courses_FindByPartialName(string partialname)
         {
             using (var context = new StarTEDContext())
@@ -54,16 +44,5 @@ namespace FormA.BLL
                 return results.ToList();
             }
         }
-        //public List<Course> Courses_GetByPartialAssessName(int assessmentid, string partialname)
-        //{
-        //    using (var context = new StarTEDContext())
-        //    {
-        //        IEnumerable<Course> results =
-        //                context.Database.SqlQuery<Course>("Courses_GetByPartialAssessName @AssessmentID, @PartialName",
-        //                                new SqlParameter("AssessmentID", assessmentid),
-        //                                new SqlParameter("PartialName", partialname));
-        //        return results.ToList();
-        //    }
-        //}
     }
 }

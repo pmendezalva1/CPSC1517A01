@@ -6,13 +6,22 @@
 
     <div class="col-md-12">
         <div class="alert alert-warning">
-            <blockquote style="font-size: italic">
+            <blockquote style="font-style: italic">
                 This exercise will demonstrate the use of a GridView in order to display the information our database has on the Guardians.
             </blockquote>
         </div>
     </div>
-
     <br />
+    <asp:DataList ID="Message" runat="server" Enabled="False">
+        <ItemTemplate>
+            <%# Container.DataItem %>
+        </ItemTemplate>
+    </asp:DataList>
+    <br />
+
+    <div class="col-md-6">
+        <fieldset class="form-horizontal">
+            <legend>Guardian Records Display</legend>
         <asp:DropDownList ID="GuardiansList" runat="server">
         </asp:DropDownList>
     <br /><br />
@@ -39,4 +48,8 @@
             </tr>
         </table>
 
+        <br />
+        </fieldset>
+        </div>
+    <script src="../Scripts/bootwrap-freecode.js"></script>
 </asp:Content>

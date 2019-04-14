@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FormA.Data
+namespace A05_System.Data
 {
     public class Class1
     {

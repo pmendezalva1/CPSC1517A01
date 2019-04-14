@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 #region Additional Namespaces
-using FormA.Data;
-using FormA.DAL;
+using System.ComponentModel;
+using A05_System.Data;
+using A05_System.DAL;
 
 #endregion
 
-namespace FormA.BLL
+namespace A05_System.BLL
 {
+    [DataObject]
     public class AssessmentTypesController
     {
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public AssessmentType AssessmentTypes_Get(int assessmenttypeid)
         {
             using (var context = new StarTEDContext())

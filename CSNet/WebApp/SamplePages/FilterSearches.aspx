@@ -79,7 +79,7 @@
                     <br />
                     <asp:Label ID="label5" runat="server" Text="Enter a product name:">
                     </asp:Label>
-                    <asp:TextBox ID="PartialProductNameV3" runat="server" OnTextChanged="PartialProductNameV3_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="PartialProductNameV3" runat="server"></asp:TextBox>
 
                     <asp:Button ID="SearchSupplierProductsPartial" runat="server"
                         Text="Search Products" OnClick="SearchSupplierProductsPartial_Click" />

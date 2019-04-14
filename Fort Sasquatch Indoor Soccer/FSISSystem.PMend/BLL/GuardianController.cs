@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 #region Additional Namespaces
 using FSISSystem.PMend.Data; //Obtains <T> Defs
 using FSISSystem.PMend.DAL; //Obtains context class
+using System.Data.Entity;
 #endregion
 
 namespace FSISSystem.PMend.BLL

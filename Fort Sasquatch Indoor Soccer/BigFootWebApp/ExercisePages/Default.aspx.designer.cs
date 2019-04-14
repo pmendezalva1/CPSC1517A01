@@ -13,13 +13,22 @@ namespace BigFootWebApp.ExercisePages {
     public partial class Default {
         
         /// <summary>
-        /// GuardiansList control.
+        /// Message control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList GuardiansList;
+        protected global::System.Web.UI.WebControls.DataList Message;
+        
+        /// <summary>
+        /// GuardianList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList GuardianList;
         
         /// <summary>
         /// Submit control.
@@ -38,5 +47,14 @@ namespace BigFootWebApp.ExercisePages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Clear;
+        
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

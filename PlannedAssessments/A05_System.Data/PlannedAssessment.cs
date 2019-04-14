@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 #region Additional Namespaces
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 #endregion
 
-namespace FormA.Data
+namespace A05_System.Data
 {
     [Table("PlannedAssessments")]
     public class PlannedAssessment
