@@ -67,15 +67,29 @@ namespace BigFootWebApp.ExercisePages
             {
                 errormsgs.Add("Please select one of the guardians.");
                 LoadMessageDisplay(errormsgs, "alert alert-info");
+                GuardianList.DataSource = null;
+                GuardianList.DataBind();
             }
             else
             {
-                GuardianController sysmgr = new GuardianController();
-                List<Guardian> datainfo = sysmgr.Guardian_Find(int.Parse(GuardianID.Text.Trim()));
                 try
                 {
-                    BindGuardianList();
-                    GuardianList.SelectedValue = FirstName.Text;
+                    GuardianController sysmgr = new GuardianController();
+                    List<Guardian> datainfo = sysmgr.Guardian_Find(int.Parse(GuardianList.SelectedValue));
+                    if(datainfo.Count == 0)
+                    {
+                        errormsgs.Add("No data found for those guardians.");
+                        LoadMessageDisplay(errormsgs, "alert alert-info");
+                    }
+                    else
+                    {
+                        datainfo.Sort((x, y) => x.FullName.CompareTo(y.FullName));
+                        GuardianList.DataSource = datainfo;
+                        GuardianList.DataTextField = nameof(Guardian.FullName);
+                        GuardianList.DataValueField = nameof(Guardian.GuardianID);
+                        BindGuardianList();
+                        GuardianList.SelectedValue = LastName.Text;                        
+                    }
                 }
                 catch (Exception ex)
                 {
