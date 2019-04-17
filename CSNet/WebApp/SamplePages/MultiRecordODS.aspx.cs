@@ -41,5 +41,10 @@ namespace WebApp.SamplePages
             msg += "Disc is:" + (agvrow.FindControl("Discontinued") as CheckBox).Checked.ToString();
             Message.Text = msg;
         }
+
+        protected void FetchCategoryProducts_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
