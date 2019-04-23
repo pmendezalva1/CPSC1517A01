@@ -42,9 +42,9 @@ namespace WebApp.SamplePages
             Message.Text = msg;
         }
 
-        protected void FetchCategoryProducts_Click(object sender, EventArgs e)
-        {
+        //protected void FetchCategoryProducts_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }

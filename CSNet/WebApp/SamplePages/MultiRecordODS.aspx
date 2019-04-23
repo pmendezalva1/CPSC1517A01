@@ -17,7 +17,8 @@
     <div class="row">
         <asp:Literal ID="Literal1" runat="server" Text="Categories:"></asp:Literal>
         &nbsp;&nbsp;
-        <asp:DropDownList ID="CategoryList" runat="server" DataSourceID="CategoryListODS" DataTextField="CategoryName" DataValueField="CategoryID" AppendDataBoundItems="True">
+        <asp:DropDownList ID="CategoryList" runat="server" DataSourceID="CategoryListODS" DataTextField="CategoryName" 
+            DataValueField="CategoryID" AppendDataBoundItems="True">
             <asp:ListItem Value="0">select...</asp:ListItem>
         </asp:DropDownList>
         &nbsp;&nbsp;
@@ -60,7 +61,8 @@
                     <ItemTemplate>
                          <%--<asp:Label ID="CategoryID" runat="server" 
                             Text='<%# Eval("CategoryID") %>'></asp:Label>--%>
-                        <asp:DropDownList ID="CategoryListGV" runat="server" DataSourceID="CategoryListODS" DataTextField="CategoryName" DataValueField="CategoryID"
+                        <asp:DropDownList ID="CategoryListGV" runat="server" DataSourceID="CategoryListODS" 
+                            DataTextField="CategoryName" DataValueField="CategoryID"
                             SelectedValue='<%# Eval("CategoryID") %>'
                              Enabled="false">
 
@@ -96,7 +98,8 @@
     <asp:ObjectDataSource ID="ProductListODS" runat="server" OldValuesParameterFormatString="original_{0}" 
         SelectMethod="Product_GetByCategories" TypeName="NorthwindSystem.BLL.ProductController">
         <SelectParameters>
-            <asp:ControlParameter ControlID="CategoryList" PropertyName="SelectedValue" DefaultValue="0" Name="categoryid" Type="Int32"></asp:ControlParameter>
+            <asp:ControlParameter ControlID="CategoryList" PropertyName="SelectedValue" DefaultValue="0" 
+                Name="categoryid" Type="Int32"></asp:ControlParameter>
         </SelectParameters>
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="SupplierListODS" runat="server" OldValuesParameterFormatString="original_{0}" 
